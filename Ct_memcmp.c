@@ -17,17 +17,19 @@ void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)
 	size_t	i;
 
 	i = 0;
-	Ct_mprintf(ptr1, size, type);
+	Ct_mprintf(ptr1, size, type, 'A');
 	if (type == 0)
 	{
+		printf("[i]");
 		while (i < size)
 			printf("%12ld | ", i++);
 	}
 	else if (type == 1)
 	{
+		printf("[i]");
 		while (i < size)
-			printf("%2ld | ", i++);
+			printf("%3ld | ", i++);
 	}
 	printf("\n");
-	Ct_mprintf(ptr2, size, type);
+	Ct_mprintf(ptr2, size, type, 'B');
 }

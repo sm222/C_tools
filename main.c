@@ -15,10 +15,10 @@
 int	main(void)
 {
 	char	*t;
-	char	*t2;
-
-	t = "test";
-	t2 = "hello :)";
-	Ct_memcmp(t, t2, 8,1);
-	Ct_memcmp(t, t2, 8,0);
+	char	t2[32];
+	int	i = -1;
+	t = "abcdefghijklmnopqrstuvwxyz";
+	while (++i < 32)
+		t2[i] = i;
+	Ct_memcmp(t, t2, 32,1);
 }

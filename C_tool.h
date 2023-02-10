@@ -16,13 +16,16 @@
 # include <stdio.h>
 # include <unistd.h>
 
-void	Ct_mprintf(void *ptr, size_t size, int type);
+void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
 
 typedef struct s_tool {
-	int		bonjour;
-	char	lettre;
-	size_t	index;
+	int		i;
+	int		j;
+	size_t	x;
+	size_t	y;
+	char	*s;
+	char	*str;
 
 } t_tool;
 
