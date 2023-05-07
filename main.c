@@ -14,5 +14,12 @@
 
 int	main(void)
 {
-	
+	flag_init();
+	printf("make flag * %d\n", make_flag("test"));
+	printf("make flag * %d\n", make_flag("test"));
+	flag_end();
+	Ct_err("main");
+
+	char s[10];
+	s++;
 }
