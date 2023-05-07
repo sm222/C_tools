@@ -7,7 +7,8 @@ RM		=	rm -f
 
 # Sources are all .c files
 SRCS	=	Ct_mprintf.c\
-			Ct_memcmp.c
+			Ct_memcmp.c\
+			Ct_utilse.c
 
 
 OBJS	=	$(SRCS:.c=.o)

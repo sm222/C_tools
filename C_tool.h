@@ -15,7 +15,19 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 
+# ifndef Ct_err_code
+#  define Ct_err_code
+	int			Ct_err_c;
+	const char	Ct_err_msg[10][30] = {
+		"fail in",
+		"fail in that",
+	};
+# endif
+
+void	Ct_err(char *msg);
+void	*Ct_rt_ptr(void *ptr, int i);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
 
@@ -27,8 +39,12 @@ typedef struct s_tool {
 	char	*s;
 	char	*str;
 
-} t_tool;
+}	t_tool;
 
-
+typedef struct s_flag {
+	char			*name;
+	size_t			time;
+	struct s_flag	*next;
+}	t_flag;
 
 #endif

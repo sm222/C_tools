@@ -14,11 +14,5 @@
 
 int	main(void)
 {
-	char	*t;
-	char	t2[32];
-	int	i = -1;
-	t = "abcdefghijklmnopqrstuvwxyz";
-	while (++i < 32)
-		t2[i] = i;
-	Ct_memcmp(t, t2, 32,1);
+	
 }
