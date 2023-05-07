@@ -44,7 +44,7 @@ void	Ct_mprintf(void *ptr, size_t size, int type, int name)
 			else if (((char *)ptr)[i] == 3)
 				printf("ETX | ");
 			else if (((char *)ptr)[i] == 4)
-				printf("EOT | ");	
+				printf("EOT | ");
 			else if (((char *)ptr)[i] == 5)
 				printf("ENQ | ");
 			else if (((char *)ptr)[i] == 6)
