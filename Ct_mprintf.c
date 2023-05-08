@@ -23,6 +23,8 @@ void	Ct_mprintf(void *ptr, size_t size, int type, int name)
 	size_t	i;
 
 	i = 0;
+	if (!ptr)
+		return ;
 	printf("[%c]", name);
 	if (type == 0)
 	{

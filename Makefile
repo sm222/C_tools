@@ -29,7 +29,7 @@ fclean: clean
 	$(RM) a.out
 
 build: all
-	$(CC) main.c $(NAME) && ./a.out
+	$(CC) $(CFLAGS) main.c $(NAME) && ./a.out
 
 # Removes objects and executables and remakes
 re: fclean all

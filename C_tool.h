@@ -15,6 +15,9 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "color.h"
 
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
@@ -29,6 +32,9 @@ typedef struct s_tool {
 
 } t_tool;
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 90
+# endif
 
 
 #endif

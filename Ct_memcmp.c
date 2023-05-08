@@ -26,9 +26,11 @@ void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)
 	}
 	else if (type == 1)
 	{
+		printf(YEL);
 		printf("[i]");
 		while (i < size)
 			printf("%3ld | ", i++);
+		printf(WHT);
 	}
 	printf("\n");
 	Ct_mprintf(ptr2, size, type, 'B');
