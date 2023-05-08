@@ -5,6 +5,8 @@ CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -f
 
+
+
 # Sources are all .c files
 SRCS	=	Ct_mprintf.c\
 			Ct_memcmp.c\

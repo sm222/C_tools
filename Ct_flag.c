@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 22:05:44 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/07 23:05:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ static t_flag	*make_node_flag(char *name)
 	return (new);
 }
 
+/// @brief make a flag with the name you call it,
+/// @brief if you call the same flag it will got up by one
+/// @param name name of the flag
+/// @return 0 if flag_init was not call fist,
+/// @return -1 malloc fail,
 int	Ct_make_flag(char *name)
 {
 	t_flag	**tmp;
@@ -74,7 +79,7 @@ int	Ct_make_flag(char *name)
 			tm = tm->next;
 		tm->next = make_node_flag(name);
 		if (!tm->next)
-			return (err_code = 2, 0);
+			return (err_code = 2, -1);
 	}
 	return (1);
 }
@@ -96,7 +101,7 @@ int	Ct_flag_init(void)
 }
 
 /// @brief call at the end of your program after you use all the flag
-/// @return 
+/// @return return -1 if falure, 1 if sucsesse
 int	Ct_flag_end(void)
 {
 	t_flag	**d;
