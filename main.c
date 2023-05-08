@@ -15,21 +15,5 @@
 
 int	main(void)
 {
-<<<<<<< HEAD
 	
-	static char	*str;
-
-	if (!str)
-		str = calloc(1, 1);
-
-=======
-	flag_init();
-	printf("make flag * %d\n", make_flag("test"));
-	printf("make flag * %d\n", make_flag("test"));
-	flag_end();
-	Ct_err("main");
-
-	char s[10];
-	s++;
->>>>>>> refs/remotes/origin/main
 }
