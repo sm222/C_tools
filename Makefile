@@ -7,7 +7,9 @@ RM		=	rm -f
 
 # Sources are all .c files
 SRCS	=	Ct_mprintf.c\
-			Ct_memcmp.c
+			Ct_memcmp.c\
+			Ct_utils.c\
+			Ct_passage.c
 
 
 OBJS	=	$(SRCS:.c=.o)
@@ -19,6 +21,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 # Removes objects
 clean:
 	$(RM) $(OBJS)

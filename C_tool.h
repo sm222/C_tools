@@ -18,9 +18,24 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "color.h"
+# include <stdlib.h>
+# include <errno.h>
 
+# ifndef ERR_CODE
+#  define ERR_CODE
+int			err_code;
+# endif
+
+char	*Ct_strdup(char *s1);
+int		flag_end(void);
+int		flag_init(void);
+void	Ct_err(char *msg);
+int		make_flag(char *name);
+void	*Ct_rt_ptr(void *ptr, int i);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
+int		pass_flag(char *ft, int mode);
+int		Ct_strcmp(char *s1, char *s2);
 
 typedef struct s_tool {
 	int		i;
@@ -30,11 +45,15 @@ typedef struct s_tool {
 	char	*s;
 	char	*str;
 
-} t_tool;
+}	t_tool;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 90
 # endif
-
+typedef struct s_flag {
+	char			*name;
+	size_t			time;
+	struct s_flag	*next;
+}	t_flag;
 
 #endif
