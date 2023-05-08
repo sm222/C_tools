@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 16:14:28 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:05:34 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 extern int	err_code;
 
-const	char err_msg[6][30] = {
+const	char err_msg[10][30] = {
 	"no err",
 	"err malloc",
 	"did't call flag_init",
 	"can't make flag",
+	"call flag_init more that once",
+	"call flag_end with no flag",
 };
 
 int	Ct_strcmp(char *s1, char *s2)
@@ -64,6 +66,8 @@ void	*Ct_rt_ptr(void *ptr, int i)
 		list[i] = ptr;
 	if (!ptr && i > 0 && i < 101)
 		return (list[i]);
+	if (i < 0 && i > -101)
+		list[i * -1] = NULL;
 	return (NULL);
 }
 

@@ -15,5 +15,8 @@
 
 int	main(void)
 {
-	
+	Ct_flag_init();
+	Ct_flag_end();
+	Ct_flag_end();
+	Ct_err("main");
 }

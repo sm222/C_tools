@@ -9,7 +9,7 @@ RM		=	rm -f
 SRCS	=	Ct_mprintf.c\
 			Ct_memcmp.c\
 			Ct_utils.c\
-			Ct_passage.c
+			Ct_flag.c
 
 
 OBJS	=	$(SRCS:.c=.o)

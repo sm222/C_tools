@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_passage.c                                       :+:      :+:    :+:   */
+/*   Ct_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 21:05:50 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:05:44 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,24 @@ int	Ct_make_flag(char *name)
 	return (1);
 }
 
+/// @brief start the flag variable
+/// @return return 1 if do once, return -1 if call more that once
 int	Ct_flag_init(void)
 {
 	static t_flag	*f_list = NULL;
 
-	Ct_rt_ptr(&f_list, 1);
+	if (f_list)
+	{
+		err_code = 4;
+		return (-1);
+	}
+	else
+		Ct_rt_ptr(&f_list, 1);
 	return (1);
 }
 
+/// @brief call at the end of your program after you use all the flag
+/// @return 
 int	Ct_flag_end(void)
 {
 	t_flag	**d;
@@ -95,7 +105,7 @@ int	Ct_flag_end(void)
 
 	d = Ct_rt_ptr(NULL, 1);
 	if (!d)
-		return (err_code = 2, -1);
+		return (err_code = 5, -1);
 	end = (*d);
 	while (end)
 	{
@@ -105,5 +115,6 @@ int	Ct_flag_end(void)
 		free(end);
 		end = tmp;
 	}
+	Ct_rt_ptr(NULL, -1);
 	return (1);
 }
