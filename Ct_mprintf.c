@@ -12,12 +12,43 @@
 
 #include "C_tool.h"
 
-/*
-	ptr = data
-	size = width of the pointer
-	type , 0 int , 1 char
-	name = exp : 'A' 'B' 'C'
-*/
+/// @brief use to pritn the memorry from a int or char ptr
+/// @param ptr adress
+/// @param size width of the pointer (length of the array)
+/// @param type  0 int , 1 char
+/// @param name exp : 'A' 'B' 'C'
+/// @details 00	'\0' 	(null character)
+/// @details 1 	  SOH	(start of heading)
+/// @details 2 	  STX	(start of text)
+/// @details 3 	  ETX	(end of text)
+/// @details 4 	  EOT	(end of transmission)
+/// @details 5 	  ENQ	(enquiry)
+/// @details 6 	  ACK	(acknowledge)
+/// @details 7 	  BEL	'\a' (bell)
+/// @details 8 	  BS 	'\b' (backspace)
+/// @details 9 	  HT 	'\t' (horizontal tab)
+/// @details 10	  LF 	'\n' (new line)
+/// @details 11	  VT 	'\v' (vertical tab)
+/// @details 12	  FF 	'\f' (form feed)
+/// @details 13	  CR 	'\r' (carriage ret)
+/// @details 14	  SO 	(shift out)
+/// @details 15	  SI 	(shift in)
+/// @details 16	  DLE	(data link escape)
+/// @details 17	  DC1	(device control 1)
+/// @details 18	  DC2	(device control 2)
+/// @details 19	  DC3	(device control 3)
+/// @details 20	  DC4	(device control 4)
+/// @details 21	  NAK	(negative ack.)
+/// @details 22	  SYN	(synchronous idle)
+/// @details 23	  ETB	(end of trans. blk)
+/// @details 24	  CAN	(cancel)
+/// @details 25	  EM 	(end of medium)
+/// @details 26	  SUB	(substitute)
+/// @details 27	  ESC	(escape)
+/// @details 28	  FS 	(file separator)
+/// @details 29	  GS 	(group separator)
+/// @details 30	  RS 	(record separator)
+/// @details 31	  US 	(unit separator)
 void	Ct_mprintf(void *ptr, size_t size, int type, int name)
 {
 	size_t	i;
@@ -108,38 +139,3 @@ void	Ct_mprintf(void *ptr, size_t size, int type, int name)
 	}
 	printf("\n");
 }
-
-/*
-00	'\0' 	(null character)
-1 	  SOH	(start of heading)
-2 	  STX	(start of text)
-3 	  ETX	(end of text)
-4 	  EOT	(end of transmission)
-5 	  ENQ	(enquiry)
-6 	  ACK	(acknowledge)
-7 	  BEL	'\a' (bell)
-8 	  BS 	'\b' (backspace)
-9 	  HT 	'\t' (horizontal tab)
-10	  LF 	'\n' (new line)
-11	  VT 	'\v' (vertical tab)
-12	  FF 	'\f' (form feed)
-13	  CR 	'\r' (carriage ret)
-14	  SO 	(shift out)
-15	  SI 	(shift in)
-16	  DLE	(data link escape)
-17	  DC1	(device control 1)
-18	  DC2	(device control 2)
-19	  DC3	(device control 3)
-20	  DC4	(device control 4)
-21	  NAK	(negative ack.)
-22	  SYN	(synchronous idle)
-23	  ETB	(end of trans. blk)
-24	  CAN	(cancel)
-25	  EM 	(end of medium)
-26	  SUB	(substitute)
-27	  ESC	(escape)
-28	  FS 	(file separator)
-29	  GS 	(group separator)
-30	  RS 	(record separator)
-31	  US 	(unit separator)
-*/

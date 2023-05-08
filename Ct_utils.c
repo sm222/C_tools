@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 22:05:34 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:45:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ size_t	Ct_put_str(char *s, int fd)
 	return (write(fd, s, Ct_str_len(s)));
 }
 
+/// @brief tell what ft did't work well
+/// @param msg tell where the problem occur
 void	Ct_err(char *msg)
 {
 	Ct_put_str(msg, 2);
@@ -58,6 +60,10 @@ void	Ct_err(char *msg)
 	Ct_put_str("\n", 2);
 }
 
+/// @brief return 
+/// @param ptr input adrres
+/// @param i give the index of the adrres you want
+/// @return return the adress ask
 void	*Ct_rt_ptr(void *ptr, int i)
 {
 	static void	*list[100];

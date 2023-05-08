@@ -50,10 +50,6 @@ typedef struct s_tool {
 
 }	t_tool;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 90
-# endif
-
 typedef struct s_flag {
 	char			*name;
 	size_t			time;
