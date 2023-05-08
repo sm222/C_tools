@@ -28,18 +28,15 @@ int	main(void)
 	// flag - fist: start with flag init
 	Ct_flag_init();
 	// second: make flag as you want
-	Ct_make_flag("one", 1);
-	Ct_make_flag("two", 2);
-	Ct_make_flag("three", 1);
-	Ct_make_flag("three", 3);
-	Ct_make_flag("three", 3);
-	Ct_make_flag("two", 2);
-	Ct_make_flag("im also twe", 2);
+	//Ct_make_flag("one", 1);
+	//Ct_make_flag("two", 2);
+	//Ct_make_flag("three", 1);
 	// last: print all the flag use and free them
 	//use to print the memorry of 2 poiter to cmper them
 	Ct_flag_print(1);
-	Ct_flag_print(2);
+	Ct_err("main");
 	Ct_flag_end(-1);
+	Ct_err("main");
 	Ct_memcmp(&Ct_flag_init, &Ct_flag_end, 10, 0);
 
 	//use to print memorry of a array
