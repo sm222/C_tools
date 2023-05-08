@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 22:45:03 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/08 10:22:45 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 extern int	err_code;
 
-const	char err_msg[10][30] = {
+const char err_msg[100][50] = {
 	"no err",
 	"err malloc",
 	"did't call flag_init",
 	"can't make flag",
 	"call flag_init more that once",
 	"call flag_end with no flag",
+	"call flag_print with no flag",
+	"make a flag with a negative number",
 };
 
 int	Ct_strcmp(char *s1, char *s2)
@@ -35,7 +37,7 @@ int	Ct_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-static size_t	Ct_str_len(const char *s)
+size_t	Ct_str_len(const char *s)
 {
 	size_t	i;
 

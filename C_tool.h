@@ -26,19 +26,29 @@
 int			err_code;
 # endif
 
+enum	e_err_msg_code {
+	no_err,
+	err_malloc,
+	didt_call_flag_init,
+	can_t_make_flag,
+	call_flag_init_more_that_once,
+	call_flag_end_with_no_flag,
+	call_flag_print_with_no_flag,
+	make_a_flag_with_a_negtive_number,
+};
+
 // flag
 
 int		Ct_flag_init(void);
-int		Ct_make_flag(char *name);
+int		Ct_make_flag(char *name, short cat);
+int		Ct_flag_print(short cat);
 int		Ct_flag_end(void);
 
+// 
 
-char	*Ct_strdup(char *s1);
 void	Ct_err(char *msg);
-void	*Ct_rt_ptr(void *ptr, int i);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
-int		Ct_strcmp(char *s1, char *s2);
 
 typedef struct s_tool {
 	int		i;
@@ -53,6 +63,7 @@ typedef struct s_tool {
 typedef struct s_flag {
 	char			*name;
 	size_t			time;
+	short			cat;
 	struct s_flag	*next;
 }	t_flag;
 

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/07 23:05:24 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/08 10:22:06 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "C_tool.h"
+#include "utile.h"
 
 extern int	err_code;
 
@@ -27,7 +28,7 @@ size_t	flag_len(t_flag *in)
 	return (i);
 }
 
-static t_flag	*make_node_flag(char *name)
+static t_flag	*make_node_flag(char *name, short cat)
 {
 	t_flag	*new;
 
@@ -39,6 +40,7 @@ static t_flag	*make_node_flag(char *name)
 	}
 	new->name = Ct_strdup(name);
 	new->time = 1;
+	new->cat = cat;
 	new->next = NULL;
 	return (new);
 }
@@ -48,17 +50,19 @@ static t_flag	*make_node_flag(char *name)
 /// @param name name of the flag
 /// @return 0 if flag_init was not call fist,
 /// @return -1 malloc fail,
-int	Ct_make_flag(char *name)
+int	Ct_make_flag(char *name, short cat)
 {
 	t_flag	**tmp;
 	t_flag	*tm;
 
-	tmp = Ct_rt_ptr(NULL, 1);
+	tmp = Ct_rt_ptr(NULL, Ct_flag);
 	if (tmp == NULL)
 		return (err_code = 2, 0);
+	if (cat < 0)
+		return (err_code = 7, 0);
 	if (*tmp == NULL)
 	{
-		*tmp = make_node_flag(name);
+		*tmp = make_node_flag(name, cat);
 		if (!*tmp)
 			return (err_code = 1, -1);
 	}
@@ -72,12 +76,11 @@ int	Ct_make_flag(char *name)
 				tm->time++;
 				return (tm->time);
 			}
+			if (!tm->next)
+				break ;
 			tm = tm->next;
 		}
-		tm = (*tmp);
-		while (tm->next)
-			tm = tm->next;
-		tm->next = make_node_flag(name);
+		tm->next = make_node_flag(name, cat);
 		if (!tm->next)
 			return (err_code = 2, -1);
 	}
@@ -96,9 +99,31 @@ int	Ct_flag_init(void)
 		return (-1);
 	}
 	else
-		Ct_rt_ptr(&f_list, 1);
+		Ct_rt_ptr(&f_list, Ct_flag);
 	return (1);
 }
+
+int	Ct_flag_print(short cat)
+{
+	t_flag	**d;
+	t_flag	*tmp;
+
+	d = Ct_rt_ptr(NULL, Ct_flag);
+	if (!d)
+		return (err_code = 6, -1);
+	tmp = (*d);
+	printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
+	printf("%s\n", "____________________________");
+	while (tmp)
+	{
+		if (tmp->cat == cat || cat < 0)
+			printf("%10.10s | %9zu | %3d\n", tmp->name, tmp->time, tmp->cat);
+		tmp = tmp->next;
+	}
+	printf("%s\n", "____________________________");
+	return (1);
+}
+
 
 /// @brief call at the end of your program after you use all the flag
 /// @return return -1 if falure, 1 if sucsesse
@@ -108,18 +133,21 @@ int	Ct_flag_end(void)
 	t_flag	*end;
 	t_flag	*tmp;
 
-	d = Ct_rt_ptr(NULL, 1);
+	d = Ct_rt_ptr(NULL, Ct_flag);
 	if (!d)
-		return (err_code = 5, -1);
+		return (err_code = call_flag_end_with_no_flag, -1);
 	end = (*d);
+	printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
+	printf("%s\n", "____________________________");
 	while (end)
 	{
-		printf("%10s/%5zu\n", end->name, end->time);
+		printf("%10.10s | %9zu | %3d\n", end->name, end->time, end->cat);
 		free(end->name);
 		tmp = end->next;
 		free(end);
 		end = tmp;
 	}
-	Ct_rt_ptr(NULL, -1);
+	printf("%s\n", "____________________________");
+	Ct_rt_ptr(NULL, Ct_flag * -1);
 	return (1);
 }
