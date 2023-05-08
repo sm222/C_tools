@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/08 10:22:45 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:33:01 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ const char err_msg[100][50] = {
 	"call flag_end with no flag",
 	"call flag_print with no flag",
 	"make a flag with a negative number",
+	"call flag_print with no flag_init",
+	"call flag_end with no flag",
 };
 
 int	Ct_strcmp(char *s1, char *s2)

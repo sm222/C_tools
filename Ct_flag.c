@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/08 10:22:06 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:39:28 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ int	Ct_flag_init(void)
 	return (1);
 }
 
+/// @brief use to print to flag on screan
+/// @param cat wich catego you want to show, number under 0 show them all
+/// @return return -1 if call with no flag, else return 1
 int	Ct_flag_print(short cat)
 {
 	t_flag	**d;
@@ -110,10 +113,15 @@ int	Ct_flag_print(short cat)
 
 	d = Ct_rt_ptr(NULL, Ct_flag);
 	if (!d)
-		return (err_code = 6, -1);
+		return (err_code = call_flag_print_with_no_flag_init, -1);
 	tmp = (*d);
-	printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
-	printf("%s\n", "____________________________");
+	if (tmp)
+	{
+		printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
+		printf("%s\n", "____________________________");
+	}
+	else
+		return (err_code = call_flag_print_with_no_flag, -1);
 	while (tmp)
 	{
 		if (tmp->cat == cat || cat < 0)
@@ -126,8 +134,9 @@ int	Ct_flag_print(short cat)
 
 
 /// @brief call at the end of your program after you use all the flag
+/// @param print print the result at the end or not
 /// @return return -1 if falure, 1 if sucsesse
-int	Ct_flag_end(void)
+int	Ct_flag_end(short print)
 {
 	t_flag	**d;
 	t_flag	*end;
@@ -137,17 +146,30 @@ int	Ct_flag_end(void)
 	if (!d)
 		return (err_code = call_flag_end_with_no_flag, -1);
 	end = (*d);
-	printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
-	printf("%s\n", "____________________________");
+	if (end)
+	{
+		if (print > 0)
+		{
+			printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
+			printf("%s\n", "____________________________");
+		}
+	}
+	else
+	{
+		Ct_rt_ptr(NULL, Ct_flag * -1);
+		return (err_code = call_flag_end_with_no_flag, -1);
+	}
 	while (end)
 	{
-		printf("%10.10s | %9zu | %3d\n", end->name, end->time, end->cat);
+		if (print > 0)
+			printf("%10.10s | %9zu | %3d\n", end->name, end->time, end->cat);
 		free(end->name);
 		tmp = end->next;
 		free(end);
 		end = tmp;
 	}
-	printf("%s\n", "____________________________");
+	if (print > 0)
+		printf("%s\n", "____________________________");
 	Ct_rt_ptr(NULL, Ct_flag * -1);
 	return (1);
 }

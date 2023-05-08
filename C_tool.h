@@ -35,6 +35,7 @@ enum	e_err_msg_code {
 	call_flag_end_with_no_flag,
 	call_flag_print_with_no_flag,
 	make_a_flag_with_a_negtive_number,
+	call_flag_print_with_no_flag_init,
 };
 
 // flag
@@ -42,7 +43,7 @@ enum	e_err_msg_code {
 int		Ct_flag_init(void);
 int		Ct_make_flag(char *name, short cat);
 int		Ct_flag_print(short cat);
-int		Ct_flag_end(void);
+int		Ct_flag_end(short print);
 
 // 
 
