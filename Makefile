@@ -11,7 +11,9 @@ RM		=	rm -f
 SRCS	=	Ct_mprintf.c\
 			Ct_memcmp.c\
 			Ct_utils.c\
-			Ct_flag.c
+			Ct_flag.c\
+			Ct_time.c
+
 
 
 OBJS	=	$(SRCS:.c=.o)

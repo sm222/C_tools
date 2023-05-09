@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Ct_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 18:40:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/02/09 18:40:49 by anboisve         ###   ########.fr       */
+/*   Created: 2023/05/08 21:29:19 by anboisve          #+#    #+#             */
+/*   Updated: 2023/05/08 21:29:19 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+extern int	err_code;
+
 #include "C_tool.h"
+#include "utile.h"
+#include <time.h>
 
-/*
-	Ct_flag_init();
-	Ct_make_flag(name);
-	Ct_flag_end();
-
-	void	Ct_mprintf(void *ptr, size_t size, int type, int name)
-	void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)
-
-	void	Ct_err(char *msg)
-*/
-
-int	main(void)
+void	Ct_time_print(void)
 {
-	Ct_err("main");
-	for (size_t i = 0; i < 100; i++)
-	{
-		printf("\\033[2K\\r");
-		Ct_time_print();
-		sleep(1);
-	}
-	
-	return 0;
+	time_t rawtime;
+	struct tm *timeinfo;
+
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	printf("\r%s", asctime(timeinfo));
+}
+
+char	*Ct_time_return(void)
+{
+	time_t rawtime;
+	struct tm *timeinfo;
+
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	return(asctime(timeinfo));
 }

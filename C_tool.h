@@ -45,7 +45,12 @@ int		Ct_make_flag(char *name, short cat);
 int		Ct_flag_print(short cat);
 int		Ct_flag_end(short print);
 
-// 
+// time
+
+char	*Ct_time_return(void);
+void	Ct_time_print(void);
+
+//
 
 void	Ct_err(char *msg);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);

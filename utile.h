@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/08 10:12:37 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/08 21:33:10 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # ifndef Ct_deff
 #  define Ct_deff
 #  define Ct_flag 1
+#  define Ct_time 2
 # endif
 
 int		Ct_strcmp(char *s1, char *s2);
