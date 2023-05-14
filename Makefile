@@ -5,16 +5,12 @@ CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -f
 
-
-
 # Sources are all .c files
 SRCS	=	Ct_mprintf.c\
 			Ct_memcmp.c\
 			Ct_utils.c\
 			Ct_flag.c\
 			Ct_time.c
-
-
 
 OBJS	=	$(SRCS:.c=.o)
 # BSources are all .c files
@@ -35,6 +31,10 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) a.out
+	make -C get_next_line/ fclean
+
+flag: all
+	make -C get_next_line/
 
 build: all
 	$(CC) $(CFLAGS) main.c $(NAME) && ./a.out

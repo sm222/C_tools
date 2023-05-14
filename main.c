@@ -26,9 +26,9 @@
 int	main(void)
 {
 	Ct_err("main");
-	for (size_t i = 0; i < 100; i++)
+	for (size_t i = 0; i < 10; i++)
 	{
-		printf("\\033[2K\\r");
+		
 		Ct_time_print();
 		sleep(1);
 	}
