@@ -18,22 +18,23 @@ all: $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
-	@echo making $(NAME)
+
 $(OBJS): $(SRCS)
 	@$(CC) $(CFLAGS) -c $(SRCS)
+	@echo making $(NAME)
 
 # Removes objects
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 # Removes objects and executables
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) a.out
-	make -C get_next_line/ fclean
+	@$(RM) -f $(NAME)
+	@$(RM) -f a.out
+	@make -C get_next_line/ fclean
 
 flag: all
-	@make -C get_next_line/
+	make -C get_next_line/
 
 build: all
 	$(CC) $(CFLAGS) main.c $(NAME) && ./a.out

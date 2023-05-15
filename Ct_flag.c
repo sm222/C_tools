@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/14 20:59:13 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:39:51 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	flag_len(t_flag *in)
 
 static t_flag	*make_node_flag(char *name, short cat)
 {
-	t_flag	*new;
+	t_flag	*new = NULL;
 
 	new = calloc(1, sizeof(t_flag));
 	if (!new)
@@ -39,6 +39,12 @@ static t_flag	*make_node_flag(char *name, short cat)
 		return (NULL);
 	}
 	new->name = Ct_strdup(name);
+	if (!new->name)
+	{
+		free(new);
+		err_code = 1;
+		return (NULL);
+	}
 	new->time = 1;
 	new->cat = cat;
 	new->next = NULL;
@@ -150,19 +156,16 @@ int	Ct_flag_end(short print)
 	{
 		if (print > 0)
 			Ct_flag_print(-1);
-	}
-	else
-	{
+		while (end)
+		{
+			free(end->name);
+			tmp = end->next;
+			free(end);
+			end = tmp;
+		}
 		Ct_rt_ptr(NULL, Ct_flag * -1);
-		return (err_code = call_flag_end_with_no_flag, -1);
-	}
-	while (end)
-	{
-		free(end->name);
-		tmp = end->next;
-		free(end);
-		end = tmp;
+		return (1);
 	}
 	Ct_rt_ptr(NULL, Ct_flag * -1);
-	return (1);
+	return (err_code = call_flag_end_with_no_flag, -1);
 }
