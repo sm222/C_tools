@@ -5,7 +5,6 @@ CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -f
 
-# Sources are all .c files
 SRCS	=	Ct_mprintf.c\
 			Ct_memcmp.c\
 			Ct_utils.c\
@@ -13,16 +12,16 @@ SRCS	=	Ct_mprintf.c\
 			Ct_time.c
 
 OBJS	=	$(SRCS:.c=.o)
-# BSources are all .c files
 
 all: $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
-
+	@ar -rcs $(NAME) $(OBJS)
+	@echo making $(NAME)
 $(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+	@$(CC) $(CFLAGS) -c $(SRCS)
+
 # Removes objects
 clean:
 	$(RM) $(OBJS)
@@ -34,7 +33,7 @@ fclean: clean
 	make -C get_next_line/ fclean
 
 flag: all
-	make -C get_next_line/
+	@make -C get_next_line/
 
 build: all
 	$(CC) $(CFLAGS) main.c $(NAME) && ./a.out

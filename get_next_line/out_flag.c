@@ -33,7 +33,7 @@ int	main(void)
 		return (1);
 	}
 	s = "t";
-	printf("pipe a programe in this one, ctrl + D or C to stop\n");
+	printf(GRN"pipe a programe in this one, ctrl + D or C to stop"RESET"\n");
 	while (s)
 	{
 		s = get_next_line(0);

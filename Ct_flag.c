@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/08 12:39:28 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:59:13 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,18 +117,18 @@ int	Ct_flag_print(short cat)
 	tmp = (*d);
 	if (tmp)
 	{
-		printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
-		printf("%s\n", "____________________________");
+		printf(" %3s %11s %15.15s\n", "cat", "time call", "name");
+		printf("%s\n", "__________________________________");
 	}
 	else
 		return (err_code = call_flag_print_with_no_flag, -1);
 	while (tmp)
 	{
 		if (tmp->cat == cat || cat < 0)
-			printf("%10.10s | %9zu | %3d\n", tmp->name, tmp->time, tmp->cat);
+			printf("%3d | %11zu| %15.15s\n", tmp->cat, tmp->time, tmp->name);
 		tmp = tmp->next;
 	}
-	printf("%s\n", "____________________________");
+	printf("%s\n", "__________________________________");
 	return (1);
 }
 
@@ -149,10 +149,7 @@ int	Ct_flag_end(short print)
 	if (end)
 	{
 		if (print > 0)
-		{
-			printf("%10s | %9s | %3s\n", "Name", "time call", "cat");
-			printf("%s\n", "____________________________");
-		}
+			Ct_flag_print(-1);
 	}
 	else
 	{
@@ -161,15 +158,11 @@ int	Ct_flag_end(short print)
 	}
 	while (end)
 	{
-		if (print > 0)
-			printf("%10.10s | %9zu | %3d\n", end->name, end->time, end->cat);
 		free(end->name);
 		tmp = end->next;
 		free(end);
 		end = tmp;
 	}
-	if (print > 0)
-		printf("%s\n", "____________________________");
 	Ct_rt_ptr(NULL, Ct_flag * -1);
 	return (1);
 }

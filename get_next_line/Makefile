@@ -21,6 +21,7 @@ $(NAME): $(OBJS)
 
 $(OBJS): $(SRCS)
 	@$(CC) $(CFLAGS) -c $(SRCS)
+	@echo making $(NAME)
 
 # Generates output file
 # Removes objects
