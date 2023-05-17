@@ -27,7 +27,7 @@ int	main(void)
 {
 	char	*s;
 
-	if (Ct_flag_init() == -1)
+	if (!Ct_flag_init())
 	{
 		Ct_err("main");
 		return (1);
@@ -41,7 +41,8 @@ int	main(void)
 		{
 			if (s[Ct_str_len(s) - 1] == '\n')
 				s[Ct_str_len(s) - 1] = 0;
-			Ct_make_flag(s, 1);
+			if (Ct_make_flag(s, 1) == -1)
+				Ct_err("main");
 			free(s);
 		}
 	}

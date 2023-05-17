@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <errno.h>
 
+#define LINE "__________________________________"
+
 # ifndef ERR_CODE
 #  define ERR_CODE
 int			err_code;
