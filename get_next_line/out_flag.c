@@ -23,10 +23,26 @@ static size_t	Ct_str_len(const char *s)
 	return (i);
 }
 
-int	main(void)
+int	look_name(char *name , char **av, int ac)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (Ct_strcmp(name, av[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	main(int ac, char **av)
 {
 	char	*s;
+	short	cat;
 
+	cat = 0;
 	if (!Ct_flag_init())
 	{
 		Ct_err("main");
@@ -41,7 +57,9 @@ int	main(void)
 		{
 			if (s[Ct_str_len(s) - 1] == '\n')
 				s[Ct_str_len(s) - 1] = 0;
-			if (Ct_make_flag(s, 1) == -1)
+			if (look_name(s, av, ac))
+				cat++;
+			else if (Ct_make_flag(s, cat) == -1)
 				Ct_err("main");
 			free(s);
 		}

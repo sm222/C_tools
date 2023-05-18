@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/17 15:23:36 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:48:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int	Ct_flag_print(short cat)
 {
 	t_flag	**d;
 	t_flag	*tmp;
+	size_t	total = 0;
 
 	d = Ct_rt_ptr(NULL, Ct_flag);
 	if (!d)
@@ -131,10 +132,14 @@ int	Ct_flag_print(short cat)
 	while (tmp)
 	{
 		if (tmp->cat == cat || cat < 0)
+		{
 			printf("%3d | %11zu| %15.15s\n", tmp->cat, tmp->time, tmp->name);
+			total += tmp->time;
+		}
 		tmp = tmp->next;
 	}
 	printf("%s\n", LINE);
+	printf("%zu %13.13s\n",total , "total");
 	return (1);
 }
 

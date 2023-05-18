@@ -55,6 +55,7 @@ void	Ct_time_print(void);
 //
 
 void	Ct_err(char *msg);
+int		Ct_strcmp(char *s1, char *s2);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
 
