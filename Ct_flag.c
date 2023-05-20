@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/17 20:48:52 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:17:18 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ int	Ct_flag_init(void)
 /// @return return 0 if call with no flag, else return 1
 int	Ct_flag_print(short cat)
 {
-	t_flag	**d;
+	t_flag	**flag;
 	t_flag	*tmp;
 	size_t	total = 0;
 
-	d = Ct_rt_ptr(NULL, Ct_flag);
-	if (!d)
+	flag = Ct_rt_ptr(NULL, Ct_flag);
+	if (!flag)
 		return (err_code = call_flag_print_with_no_flag_init, 0);
-	tmp = (*d);
+	tmp = (*flag);
 	if (tmp)
 	{
 		printf(" %3s %11.11s %15.15s\n", "cat", "time call", "name");
@@ -149,14 +149,14 @@ int	Ct_flag_print(short cat)
 /// @return return 0 if falure, 1 if sucsesse
 int	Ct_flag_end(short print)
 {
-	t_flag	**d;
+	t_flag	**flag;
 	t_flag	*end;
 	t_flag	*tmp;
 
-	d = Ct_rt_ptr(NULL, Ct_flag);
-	if (!d)
+	flag = Ct_rt_ptr(NULL, Ct_flag);
+	if (!flag)
 		return (err_code = call_flag_end_with_no_flag, 0);
-	end = (*d);
+	end = (*flag);
 	if (end)
 	{
 		if (print > 0)
