@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   Ct_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2022/10/19 18:48:00 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#include "Ctlib.h"
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
+/// @brief compere 2 str
+/// @param s1 
+/// @param s2 
+/// @param n size in byte
+/// @return return the diference
+int	Ct_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
-
-#endif
+	if (n == 0 || !s1 || !s2)
+		return (0);
+	i = 0;
+	while ((s1[i] && s2[i]) && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}

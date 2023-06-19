@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/11/23 12:34:37 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+/*
+take a safefree and s2 and join
+free safefree
+return the copy
+*/
+char	*Ct_strfjoin(char *safefree, char *s2)
 {
-	int		fd;
-	char	*t;
+	size_t	s1_i;
+	size_t	s2_i;
+	char	*new;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
-	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
-	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	s1_i = Ct_strlen(safefree);
+	s2_i = Ct_strlen(s2);
+	new = Ct_calloc(s1_i + s2_i + 1, sizeof(char));
+	if (!new)
+		return (new = Ct_free(new));
+	while (s1_i + s2_i-- > s1_i)
+		new[s1_i + s2_i] = s2[s2_i];
+	while (s1_i--)
+		new[s1_i] = safefree[s1_i];
+	if (*new == 0)
+		new = Ct_free(new);
+	return (Ct_free(safefree), new);
 }

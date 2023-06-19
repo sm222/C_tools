@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2022/11/06 13:13:03 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 17:14:59 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#ifndef CT_PRINTF_H
+# define CT_PRINTF_H
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
+# include "Ctlib.h"
 
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
+typedef struct s_printf
+{
+	va_list	arg;
+	size_t	i;
+	int		total;
+	char	**out;
+}	t_printf;
+
+int		Ct_printf(int fd, char *str, ...);
+int		Ct_put_p(unsigned long p, int fd);
+char	*Ct_ulltoa(unsigned long long nb, int base);
+int		Ct_put_hex(unsigned int nb, char maj, int fd);
+int		Ct_put_u(unsigned int nb, int fd);
 
 #endif

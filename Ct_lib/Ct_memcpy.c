@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   Ct_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2022/10/19 08:46:16 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#include "Ctlib.h"
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
+/// @brief copy memory to a new ptr
+/// @param dst were the copy go
+/// @param src input of the copy
+/// @param n byte size
+/// @return new copy
+void	*Ct_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
 
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
-
-#endif
+	if (dst == NULL || src == NULL)
+		return (dst);
+	i = -1;
+	while (++i < n)
+		((char *)dst)[i] = ((char *)src)[i];
+	return (dst);
+}

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/08 12:33:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:41:13 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,4 @@ void	*Ct_rt_ptr(void *ptr, int i)
 	if (i < 0 && i > -101)
 		list[i * -1] = NULL;
 	return (NULL);
-}
-
-char	*Ct_strdup(char *s1)
-{
-	int		i;
-	char	*new;
-
-	if (!s1)
-		return (NULL);
-	i = Ct_str_len(s1);
-	new = calloc(i++ + 1, sizeof(char));
-	if (!new)
-		return (NULL);
-	while (--i >= 0)
-		new[i] = s1[i];
-	return (new);
 }

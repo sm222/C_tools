@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/05/19 20:17:18 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:43:58 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 extern int	err_code;
 
-size_t	flag_len(t_flag *in)
+size_t	flag_len(Ct_t_flag *in)
 {
 	size_t	i;
 
@@ -28,11 +28,11 @@ size_t	flag_len(t_flag *in)
 	return (i);
 }
 
-static t_flag	*make_node_flag(char *name, short cat)
+static Ct_t_flag	*make_node_flag(char *name, short cat)
 {
-	t_flag	*new = NULL;
+	Ct_t_flag	*new = NULL;
 
-	new = calloc(1, sizeof(t_flag));
+	new = calloc(1, sizeof(Ct_t_flag));
 	if (!new)
 	{
 		err_code = 1;
@@ -58,8 +58,8 @@ static t_flag	*make_node_flag(char *name, short cat)
 /// @return -1 malloc fail, 1 on success
 int	Ct_make_flag(char *name, short cat)
 {
-	t_flag	**tmp;
-	t_flag	*tm;
+	Ct_t_flag	**tmp;
+	Ct_t_flag	*tm;
 
 	tmp = Ct_rt_ptr(NULL, Ct_flag);
 	if (tmp == NULL)
@@ -95,9 +95,9 @@ int	Ct_make_flag(char *name, short cat)
 
 /// @brief start the flag variable
 /// @return return 1 if do once, return 0 if call more that once
-int	Ct_flag_init(void)
+int	Ct_t_flag_init(void)
 {
-	static t_flag	*f_list = NULL;
+	static Ct_t_flag	*f_list = NULL;
 
 	if (f_list)
 	{
@@ -114,8 +114,8 @@ int	Ct_flag_init(void)
 /// @return return 0 if call with no flag, else return 1
 int	Ct_flag_print(short cat)
 {
-	t_flag	**flag;
-	t_flag	*tmp;
+	Ct_t_flag	**flag;
+	Ct_t_flag	*tmp;
 	size_t	total = 0;
 
 	flag = Ct_rt_ptr(NULL, Ct_flag);
@@ -149,9 +149,9 @@ int	Ct_flag_print(short cat)
 /// @return return 0 if falure, 1 if sucsesse
 int	Ct_flag_end(short print)
 {
-	t_flag	**flag;
-	t_flag	*end;
-	t_flag	*tmp;
+	Ct_t_flag	**flag;
+	Ct_t_flag	*end;
+	Ct_t_flag	*tmp;
 
 	flag = Ct_rt_ptr(NULL, Ct_flag);
 	if (!flag)

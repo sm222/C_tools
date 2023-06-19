@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   Ct_return_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2023/05/29 15:06:00 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 16:51:09 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#include "Ctlib.h"
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
+/// @brief use to
+/// @param ptr input, set to NULL if you want just the output
+/// @param i index of the adrres you want
+/// @return pointer to the variable or struc
+void	*fr_return_ptr(void *ptr, int i)
+{
+	static void	*mem[10];
 
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
-
-#endif
+	if (i < 0 || i > 9)
+		return (NULL);
+	if (ptr)
+		mem[i] = ptr;
+	return (mem[i]);
+}

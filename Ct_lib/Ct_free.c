@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   Ct_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2023/06/19 16:50:00 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 17:46:22 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#include "Ctlib.h"
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
-
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
-
-#endif
+/// @brief free a pointer if the adrres in not NULL
+/// @param p input
+/// @return NULL
+void	*Ct_free(void *p)
+{
+	if (p)
+		free(p);
+	return (NULL);
+}

@@ -9,7 +9,7 @@ RM		=	rm -f
 # Sources are all .c files
 SRCS	=	get_next_line.c\
 			get_next_line_utils.c\
-			out_flag.c
+			ouCt_t_flag.c
 
 OBJS	=	$(SRCS:.c=.o)
 

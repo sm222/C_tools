@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/10/23 09:41:07 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+/// @brief compare memory and return the diference
+/// @param s1 array 1
+/// @param s2 array 2
+/// @param n size of the array
+/// @return dif
+int	Ct_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		fd;
-	char	*t;
+	size_t	i;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
-	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
+	i = 0;
+	if (!s1 || !s2 || n == 0)
 		return (0);
-	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	while (i < n -1 && (((unsigned char *)s1)[i] == ((unsigned char *)s2)[i]))
+		i++;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }

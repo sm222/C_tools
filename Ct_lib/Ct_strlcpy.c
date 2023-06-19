@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utile.h                                            :+:      :+:    :+:   */
+/*   Ct_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:42:25 by anboisve         ###   ########.fr       */
+/*   Created: 2022/10/21 09:18:25 by anboisve          #+#    #+#             */
+/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILE_H
-# define UTILE_H
+#include "Ctlib.h"
 
-# ifndef Ct_deff
-#  define Ct_deff
-#  define Ct_flag 1
-#  define Ct_time 2
-# endif
+/// @brief 
+/// @param dst 
+/// @param src 
+/// @param dstsize 
+/// @return 
+size_t	Ct_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	s;
 
-int		Ct_strcmp(char *s1, char *s2);
-size_t	Ct_str_len(const char *s);
-size_t	Ct_put_str(char *s, int fd);
-void	*Ct_rt_ptr(void *ptr, int i);
-
-#endif
+	if (!dst || !src)
+		return (0);
+	s = Ct_strlen(src);
+	if (s + 1 < dstsize)
+		Ct_memcpy(dst, ((char *)src), s + 1);
+	else if (dstsize != 0)
+	{
+		Ct_memcpy(dst, ((char *)src), dstsize - 1);
+		dst[dstsize - 1] = '\0';
+	}
+	return (s);
+}

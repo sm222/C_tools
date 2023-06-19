@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   out_flag.c                                         :+:      :+:    :+:   */
+/*   ouCt_t_flag.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	short	cat;
 
 	cat = 0;
-	if (!Ct_flag_init())
+	if (!CCt_t_flag_init())
 	{
 		Ct_err("main");
 		return (1);
@@ -64,5 +64,5 @@ int	main(int ac, char **av)
 			free(s);
 		}
 	}
-	Ct_flag_end(1);
+	CCt_t_flag_end(1);
 }

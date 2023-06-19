@@ -13,7 +13,7 @@
 #ifndef C_TOOL_H
 # define C_TOOL_H
 
-# include "lib_ft/libft.h"
+# include "Ct_lib/Ctlib.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -58,7 +58,7 @@ void	Ct_time_print(void);
 void	Ct_err(char *msg);
 int		Ct_strcmp(char *s1, char *s2);
 void	Ct_mprintf(void *ptr, size_t size, int type, int name);
-void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type);
+void	Ct_memcmp_print(void *ptr1, void *ptr2, size_t size, int type);
 
 // log
 int		Ct_debug(int err, char *msg, char *file);
@@ -78,6 +78,6 @@ typedef struct s_flag {
 	size_t			time;
 	short			cat;
 	struct s_flag	*next;
-}	t_flag;
+}	Ct_t_flag;
 
 #endif

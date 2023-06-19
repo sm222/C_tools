@@ -1,36 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_ulltoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/11/07 18:00:16 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ct_printf.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+static int	Ct_size_of_unb(unsigned long long nb, int base)
 {
-	int		fd;
-	char	*t;
+	int	size;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
+	size = 0;
+	while (nb)
 	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
+		size++;
+		nb /= base;
 	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	return (size);
+}
+
+/*
+take a number and a base and return a malloc str
+*/
+char	*Ct_ulltoa(unsigned long long nb, int base)
+{
+	char		*result;
+	int			i;
+
+	i = Ct_size_of_unb(nb, base);
+	if (nb == 0)
+		i++;
+	result = Ct_calloc(i + 1, sizeof(char));
+	if (!result)
+		return (NULL);
+	while (i--)
+	{
+		result[i] = HEX_TABLE[nb % base];
+		nb /= base;
+	}
+	return (result);
 }

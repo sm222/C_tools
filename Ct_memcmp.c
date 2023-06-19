@@ -17,7 +17,7 @@
 /// @param ptr2 ptr2
 /// @param size size of the array compere
 /// @param type 1 char, 0 int
-void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)
+void	Ct_memcmp_print(void *ptr1, void *ptr2, size_t size, int type)
 {
 	size_t	i;
 

@@ -10,8 +10,8 @@ CLE 	=	\e[1;1H\e[2J
 
 NAME	=	C_tool.a
 
-LIB		= lib_ft/libft.a
-LIB_DIR	= lib_ft
+LIB		= Ct_lib/libft.a
+LIB_DIR	= Ct_lib
 
 # Compiler and flags
 CC		=	gcc
@@ -31,6 +31,7 @@ all: lib $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
+	@cp $(LIB) $(NAME)
 	@ar -rcs $(NAME) $(OBJS) $(LIB)
 
 $(OBJS): $(SRCS)
@@ -44,13 +45,13 @@ lib:
 # Removes objects
 clean:
 	@echo $(GRN)clean$(RESET)
-	make -C $(LIB_DIR) clean
+	@make -C $(LIB_DIR) clean
 	@$(RM) $(OBJS)
 
 # Removes objects and executables
 fclean: clean
 	@echo $(GRN)fclean$(RESET)
-	make -C $(LIB_DIR) fclean
+	@make -C $(LIB_DIR) fclean
 	@$(RM) -f $(NAME)
 	@$(RM) -f a.out
 	@make -C get_next_line/ fclean

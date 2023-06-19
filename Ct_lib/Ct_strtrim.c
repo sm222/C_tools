@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/10/24 14:33:50 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+/*
+trim the str form front and back
+*/
+char	*Ct_strtrim(char const *s1, char const *set)
 {
-	int		fd;
-	char	*t;
+	size_t	s_i;
+	size_t	s_j;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
-	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
-	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	if (!s1 || !set)
+		return (NULL);
+	s_i = 0;
+	s_j = Ct_strlen(s1);
+	if (*s1 == 0)
+		return (Ct_strdup(s1));
+	while (Ct_strchr(set, (int)s1[s_i]) != NULL && s_i <= s_j)
+		s_i++;
+	while (Ct_strchr(set, (int)s1[s_j]) != NULL && s_i <= s_j)
+		s_j--;
+	return (Ct_substr(s1, s_i, (s_j - s_i + 1)));
 }

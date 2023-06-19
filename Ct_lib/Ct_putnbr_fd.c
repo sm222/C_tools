@@ -1,36 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/10/23 13:10:25 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+static int	size_int(int long nb)
 {
-	int		fd;
-	char	*t;
+	int	size;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
+	size = 1;
+	if (nb < 0)
 	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
+		size++;
+		nb *= -1;
 	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	while (nb > 9)
+	{
+		size++;
+		nb /= 10;
+	}
+	return (size);
+}
+
+int	Ct_putnbr_fd(int n, int fd)
+{
+	int	size;
+
+	size = size_int(n);
+	if (n == -2147483648)
+		Ct_putstr_fd("-2147483648", fd);
+	else if (n < 0)
+	{
+		Ct_putchar_fd('-', fd);
+		Ct_putnbr_fd(n * -1, fd);
+	}
+	else if (n > 9)
+	{
+		Ct_putnbr_fd(n / 10, fd);
+		Ct_putchar_fd(n % 10 + '0', fd);
+	}
+	else
+		Ct_putchar_fd(n + '0', fd);
+	return (size);
 }

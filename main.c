@@ -13,9 +13,9 @@
 #include "C_tool.h"
 
 /*
-	Ct_flag_init();
+	CCt_t_flag_init();
 	Ct_make_flag(name);
-	Ct_flag_end();
+	CCt_t_flag_end();
 
 	void	Ct_mprintf(void *ptr, size_t size, int type, int name)
 	void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)

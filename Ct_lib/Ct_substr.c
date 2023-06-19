@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2022/10/23 14:26:34 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+/*
+copy a str from start and with the len
+return new str
+*/
+char	*Ct_substr(char const *s, unsigned int start, size_t len)
 {
-	int		fd;
-	char	*t;
+	char	*new;
+	size_t	i;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
-	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
-	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	if (!s)
+		return (NULL);
+	i = 0;
+	if (start < Ct_strlen(s))
+		while (s[i + start] && len > i)
+			i++;
+	new = Ct_calloc(i * sizeof(char) + 1, 1);
+	if (!new)
+		return (NULL);
+	if (start >= Ct_strlen(s))
+		return (new);
+	Ct_strlcpy(new, &s[start], i + 1);
+	return (new);
 }

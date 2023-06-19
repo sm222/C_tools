@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ct_debug.c                                         :+:      :+:    :+:   */
+/*   Ct_cpy_double_char.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
+/*   Created: 2023/01/30 13:53:12 by anboisve          #+#    #+#             */
 /*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "Ctlib.h"
 
-/// @brief use to print a err code in a ouput file
-/// @param err err the ft return and print
-/// @param msg msg to print in the file
-/// @param file file name and path
-/// @return err code to put in the return ft
-int	Ct_debug(int err, char *msg, char *file)
+/// @brief copy a double array
+/// @param str input
+/// @return new double array
+char	**Ct_cpy_double_char(char **str)
 {
-	int		fd;
-	char	*t;
+	size_t	i;
+	size_t	j;
+	char	**new;
 
-	fd = open(file, O_CREAT | O_APPEND | O_RDWR, 0644);
-	if (fd == -1)
+	i = 0;
+	j = 0;
+	new = NULL;
+	if (!str)
+		return (NULL);
+	i = Ct_strlen_double(str);
+	new = Ct_calloc(i + 1, sizeof(char *));
+	if (!new)
+		return (NULL);
+	while (j < i)
 	{
-		Ct_putstr_fd("can't, make debug file\n", 2);
-		return (0);
+		new[j] = Ct_strdup(str[j]);
+		if (!new[j])
+		{
+			Ct_double_sfree((void **)new);
+			return (NULL);
+		}
+		j++;
 	}
-	Ct_printf(-1, "%o%d %s\n", &t, err ,msg);
-	Ct_putstr_fd(t, fd);
-	Ct_free(t);
-	close(fd);
-	return (err);
+	return (new);
 }
