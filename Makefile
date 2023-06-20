@@ -39,7 +39,7 @@ $(OBJS): $(SRCS)
 	@echo making $(NAME)
 
 lib:
-	@echo $(GRN)making libft$(RESET)
+	@echo $(GRN)making $(LIB)$(RESET)
 	@make -C $(LIB_DIR)
 
 # Removes objects
