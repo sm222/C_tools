@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:07:18 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:15:04 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,6 @@ char	**Ct_split(char const *s, char c);
 
 int		Ct_close_fds(int **fds, int f_ptr, int size);
 
-//bonus									//
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-int		Ct_lstsize(t_list *lst);
-t_list	*Ct_lstlast(t_list *lst);
-t_list	*Ct_lstnew(void *content);
-void	Ct_lstadd_back(t_list **lst, t_list *new);
-void	Ct_lstadd_front(t_list **lst, t_list *new);
-void	Ct_lstiter(t_list *lst, void (*f)(void *));
-void	Ct_lstdelone(t_list *lst, void (*del)(void *));
-void	Ct_lstclear(t_list **lst, void (*del)(void *));
-t_list	*Ct_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //GNL									//
 
@@ -128,16 +111,5 @@ t_list	*Ct_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #  define PTR_SIZE unsigned long long
 # endif
 */
-
-typedef struct s_info
-{
-	char	*tmp;
-	char	*tmp2;
-	int		rv;
-	size_t	cut;
-}	t_info;
-
-char	*get_next_line(int fd);
-char	*Ct_strfjoin(char *s1, char *s2);
 
 #endif

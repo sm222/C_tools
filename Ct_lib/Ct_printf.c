@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:11:16 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	Ct_print_select(va_list list, char c, int fd)
 	return (0);
 }
 
-int	make_new_str(char *s, va_list arg, char **out)
+static int	make_new_str(char *s, va_list arg, char **out)
 {
 	*out = NULL;
 	*out = Ct_combine(s + 2, arg);
@@ -67,9 +67,9 @@ int	make_new_str(char *s, va_list arg, char **out)
 /// @return len
 int	Ct_printf(int fd, char *str, ...)
 {
-	t_printf	pf;
+	Ct_t_printf	pf;
 
-	Ct_bzero(&pf, sizeof(t_printf));
+	Ct_bzero(&pf, sizeof(Ct_t_printf));
 	if (!str)
 		return (0);
 	va_start(pf.arg, str);

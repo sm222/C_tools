@@ -10,7 +10,7 @@ CLE 	=	\e[1;1H\e[2J
 
 NAME	=	C_tool.a
 
-LIB		= Ct_lib/libft.a
+LIB		= Ct_lib/Ctlib.a
 LIB_DIR	= Ct_lib
 
 # Compiler and flags

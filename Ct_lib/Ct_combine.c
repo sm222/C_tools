@@ -6,11 +6,31 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:44:12 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:46:36 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:17:32 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ctlib.h"
+
+char	*Ct_strfjoin(char *safefree, char *s2)
+{
+	size_t	s1_i;
+	size_t	s2_i;
+	char	*new;
+
+	s1_i = Ct_strlen(safefree);
+	s2_i = Ct_strlen(s2);
+	new = Ct_calloc(s1_i + s2_i + 1, sizeof(char));
+	if (!new)
+		return (new = Ct_free(new));
+	while (s1_i + s2_i-- > s1_i)
+		new[s1_i + s2_i] = s2[s2_i];
+	while (s1_i--)
+		new[s1_i] = safefree[s1_i];
+	if (*new == 0)
+		new = Ct_free(new);
+	return (Ct_free(safefree), new);
+}
 
 static char	*Ct_add_c_to_s(char *s, char c)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   Ct_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:13:03 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:14:59 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:09:37 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "Ctlib.h"
 
-typedef struct s_printf
+typedef struct Cs_printf
 {
 	va_list	arg;
 	size_t	i;
 	int		total;
 	char	**out;
-}	t_printf;
+}	Ct_t_printf;
 
 int		Ct_printf(int fd, char *str, ...);
 int		Ct_put_p(unsigned long p, int fd);

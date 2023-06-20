@@ -1,4 +1,4 @@
-NAME	=	libft.a
+NAME	=	Ctlib.a
 
 # Compiler and flags
 CC		=	gcc
@@ -20,15 +20,6 @@ SRCS	=	Ct_atoi.c\
 			Ct_isdigit.c\
 			Ct_isprint.c\
 			Ct_itoa.c\
-			Ct_lstadd_back.c\
-			Ct_lstadd_front.c\
-			Ct_lstclear.c\
-			Ct_lstdelone.c\
-			Ct_lstiter.c\
-			Ct_lstlast.c\
-			Ct_lstmap.c\
-			Ct_lstnew.c\
-			Ct_lstsize.c\
 			Ct_memchr.c\
 			Ct_memcmp.c\
 			Ct_memcpy.c\
@@ -45,7 +36,6 @@ SRCS	=	Ct_atoi.c\
 			Ct_realloc.c\
 			Ct_return_ptr.c\
 			Ct_split.c\
-			Ct_str_split.c\
 			Ct_strchr.c\
 			Ct_strdup.c\
 			Ct_striteri.c\
