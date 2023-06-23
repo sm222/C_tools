@@ -39,6 +39,7 @@ enum	e_err_msg_code {
 	call_flag_print_with_no_flag,
 	make_a_flag_with_a_negtive_number,
 	call_flag_print_with_no_flag_init,
+	cant_open_file,
 };
 
 // flag
