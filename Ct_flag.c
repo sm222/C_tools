@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:43:58 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:39:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	Ct_make_flag(char *name, short cat)
 
 /// @brief start the flag variable
 /// @return return 1 if do once, return 0 if call more that once
-int	Ct_t_flag_init(void)
+int	Ct_flag_init(void)
 {
 	static Ct_t_flag	*f_list = NULL;
 
