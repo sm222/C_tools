@@ -40,6 +40,7 @@ enum	e_err_msg_code {
 	make_a_flag_with_a_negtive_number,
 	call_flag_print_with_no_flag_init,
 	cant_open_file,
+	bad_args,
 };
 
 // flag
@@ -62,7 +63,8 @@ void	Ct_mprintf(void *ptr, size_t size, int type, int name);
 void	Ct_memcmp_print(void *ptr1, void *ptr2, size_t size, int type);
 
 // log
-int		Ct_debug(int err, char *msg, char *file);
+int		Ct_debug(int err, char *file, short clean, char *msg);
+int		Ct_debug_pro(int err, char *file, short clean, char *msg, ...);
 
 typedef struct s_tool {
 	int		i;
