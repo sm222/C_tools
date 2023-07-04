@@ -6,9 +6,11 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/23 15:15:22 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:44:49 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+extern int	err_code;
 
 #include "C_tool.h"
 

@@ -23,16 +23,17 @@ SRCS	=	Ct_mprintf.c\
 			Ct_utils.c\
 			Ct_flag.c\
 			Ct_time.c\
-			Ct_debug.c
+			Ct_debug.c\
+			Ct_malloc.c
 
 OBJS	=	$(SRCS:.c=.o)
 
 all: lib $(NAME)
 
 # Generates output file
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIB)
 	@cp $(LIB) $(NAME)
-	@ar -rcs $(NAME) $(OBJS) $(LIB)
+	@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SRCS)
 	@$(CC) $(CFLAGS) -c $(SRCS)

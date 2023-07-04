@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	err_code;
 
 #include "C_tool.h"
 #include "utile.h"
 #include <time.h>
+
+extern int	err_code;
 
 void	Ct_time_print(void)
 {

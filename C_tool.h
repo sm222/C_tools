@@ -22,12 +22,11 @@
 # include <stdlib.h>
 # include <errno.h>
 
-#define LINE "__________________________________"
+# define LINE "__________________________________"
 
-# ifndef ERR_CODE
-#  define ERR_CODE
-int			err_code;
-# endif
+int	err_code;
+# define MEM_OUT_FILE	".mem_file"
+
 
 enum	e_err_msg_code {
 	no_err,
@@ -65,6 +64,10 @@ void	Ct_memcmp_print(void *ptr1, void *ptr2, size_t size, int type);
 // log
 int		Ct_debug(int err, char *file, short clean, char *msg);
 int		Ct_debug_pro(int err, char *file, short clean, char *msg, ...);
+
+//malloc
+void	*Ct_malloc(size_t size);
+void	Ct_mall_track(void *ptr);
 
 typedef struct s_tool {
 	int		i;

@@ -12,26 +12,10 @@
 
 #include "C_tool.h"
 
-/*
-	CCt_t_flag_init();
-	Ct_make_flag(name);
-	CCt_t_flag_end();
-
-	void	Ct_mprintf(void *ptr, size_t size, int type, int name)
-	void	Ct_memcmp(void *ptr1, void *ptr2, size_t size, int type)
-
-	void	Ct_err(char *msg)
-*/
 
 int	main(void)
 {
-	Ct_err("main");
-	for (size_t i = 0; i < 10; i++)
-	{
-		
-		Ct_time_print();
-		sleep(1);
-	}
-	
-	return 0;
+	void	*ptr;
+	ptr = Ct_malloc(4);
+	free(ptr);
 }
