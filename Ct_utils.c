@@ -6,15 +6,15 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:10:49 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:41:13 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:38:53 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "C_tool.h"
 
-extern int	err_code;
+extern int	Ct_err_code;
 
-const char err_msg[100][50] = {
+const char Ct_err_msg[100][50] = {
 	"no err",
 	"err malloc",
 	"did't call flag_init",
@@ -60,7 +60,7 @@ void	Ct_err(char *msg)
 {
 	Ct_put_str(msg, 2);
 	Ct_put_str(": ", 2);
-	Ct_put_str((char *)err_msg[err_code], 2);
+	Ct_put_str((char *)Ct_err_msg[Ct_err_code], 2);
 	Ct_put_str("\n", 2);
 }
 

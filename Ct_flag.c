@@ -6,14 +6,14 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/23 12:39:52 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:38:08 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "C_tool.h"
 #include "utile.h"
 
-extern int	err_code;
+extern int	Ct_err_code;
 
 size_t	flag_len(Ct_t_flag *in)
 {
@@ -35,14 +35,14 @@ static Ct_t_flag	*make_node_flag(char *name, short cat)
 	new = calloc(1, sizeof(Ct_t_flag));
 	if (!new)
 	{
-		err_code = 1;
+		Ct_err_code = err_malloc;
 		return (NULL);
 	}
 	new->name = Ct_strdup(name);
 	if (!new->name)
 	{
 		free(new);
-		err_code = 1;
+		Ct_err_code = err_malloc;
 		return (NULL);
 	}
 	new->time = 1;
@@ -63,14 +63,14 @@ int	Ct_make_flag(char *name, short cat)
 
 	tmp = Ct_rt_ptr(NULL, Ct_flag);
 	if (tmp == NULL)
-		return (err_code = 2, 0);
+		return (Ct_err_code = didt_call_flag_init, 0);
 	if (cat < 0)
-		return (err_code = 7, 0);
+		return (Ct_err_code = make_a_flag_with_a_negtive_number, 0);
 	if (*tmp == NULL)
 	{
 		*tmp = make_node_flag(name, cat);
 		if (!*tmp)
-			return (err_code = 1, -1);
+			return (Ct_err_code = err_malloc, -1);
 	}
 	else
 	{
@@ -88,7 +88,7 @@ int	Ct_make_flag(char *name, short cat)
 		}
 		tm->next = make_node_flag(name, cat);
 		if (!tm->next)
-			return (err_code = 2, -1);
+			return (Ct_err_code = didt_call_flag_init, -1);
 	}
 	return (1);
 }
@@ -101,7 +101,7 @@ int	Ct_flag_init(void)
 
 	if (f_list)
 	{
-		err_code = 4;
+		Ct_err_code = call_flag_init_more_that_once;
 		return (0);
 	}
 	else
@@ -120,7 +120,7 @@ int	Ct_flag_print(short cat)
 
 	flag = Ct_rt_ptr(NULL, Ct_flag);
 	if (!flag)
-		return (err_code = call_flag_print_with_no_flag_init, 0);
+		return (Ct_err_code = call_flag_print_with_no_flag_init, 0);
 	tmp = (*flag);
 	if (tmp)
 	{
@@ -128,7 +128,7 @@ int	Ct_flag_print(short cat)
 		printf("%s\n", LINE);
 	}
 	else
-		return (err_code = call_flag_print_with_no_flag, 0);
+		return (Ct_err_code = call_flag_print_with_no_flag, 0);
 	while (tmp)
 	{
 		if (tmp->cat == cat || cat < 0)
@@ -155,7 +155,7 @@ int	Ct_flag_end(short print)
 
 	flag = Ct_rt_ptr(NULL, Ct_flag);
 	if (!flag)
-		return (err_code = call_flag_end_with_no_flag, 0);
+		return (Ct_err_code = call_flag_end_with_no_flag, 0);
 	end = (*flag);
 	if (end)
 	{
@@ -172,5 +172,5 @@ int	Ct_flag_end(short print)
 		return (1);
 	}
 	Ct_rt_ptr(NULL, Ct_flag * -1);
-	return (err_code = call_flag_end_with_no_flag, 0);
+	return (Ct_err_code = call_flag_end_with_no_flag, 0);
 }

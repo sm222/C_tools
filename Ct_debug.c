@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
-/*   Updated: 2023/07/04 14:44:49 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:34:33 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	Ct_debug(int err, char *file, short clean, char *msg)
 	fd = open(file, O_CREAT | flag | O_RDWR, 0644);
 	if (fd == -1)
 	{
-		err_code = can_t_make_flag;
+		Ct_err_code = can_t_make_flag;
 		Ct_putstr_fd("can't, make debug file\n", 2);
 		return (cant_open_file * -1);
 	}
 	Ct_printf(-1, "%o[%d fd use]	%d %s\n", &t, fd, err ,msg);
 	if (!t)
-		err_code = err_malloc;
+		Ct_err_code = err_malloc;
 	else
 		Ct_putstr_fd(t, fd);
 	Ct_free(t);

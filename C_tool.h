@@ -24,7 +24,7 @@
 
 # define LINE "__________________________________"
 
-int	err_code;
+int	Ct_err_code;
 # define MEM_OUT_FILE	".mem_file"
 
 

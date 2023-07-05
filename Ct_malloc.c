@@ -12,7 +12,7 @@
 
 #include "C_tool.h"
 
-extern int	err_code;
+extern int	Ct_err_code;
 
 void	Ct_mall_track(void *ptr)
 {

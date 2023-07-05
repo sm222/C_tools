@@ -15,7 +15,7 @@
 #include "utile.h"
 #include <time.h>
 
-extern int	err_code;
+extern int	Ct_err_code;
 
 void	Ct_time_print(void)
 {
