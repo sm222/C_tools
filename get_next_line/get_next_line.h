@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:32:00 by anboisve          #+#    #+#             */
-/*   Updated: 2023/06/19 17:11:52 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:03:01 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "../C_tool.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
@@ -32,7 +33,6 @@ typedef struct s_info
 void	*Ct_sfree(void *p);
 void	*Ct_calloc(size_t size, size_t count);
 char	*get_next_line(int fd);
-char	*Ct_strjoin(char *s1, char *s2);
 void	Ct_bzero(void *p, size_t size);
 
 #endif // GET_NEXT_LINE_H

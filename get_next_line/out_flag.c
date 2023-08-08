@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	short	cat;
 
 	cat = 0;
-	if (!CCt_t_flag_init())
+	if (!Ct_flag_init())
 	{
 		Ct_err("main");
 		return (1);
@@ -64,5 +64,6 @@ int	main(int ac, char **av)
 			free(s);
 		}
 	}
-	CCt_t_flag_end(1);
+	Ct_flag_end(1);
+	return (0);
 }
