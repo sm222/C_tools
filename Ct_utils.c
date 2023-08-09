@@ -58,10 +58,7 @@ size_t	Ct_put_str(char *s, int fd)
 /// @param msg tell where the problem occur
 void	Ct_err(char *msg)
 {
-	Ct_put_str(msg, 2);
-	Ct_put_str(": ", 2);
-	Ct_put_str((char *)Ct_err_msg[Ct_err_code], 2);
-	Ct_put_str("\n", 2);
+	Ct_printf(2, "%o%s: %s\n", NULL, msg, (char *)Ct_err_msg[Ct_err_code]);
 }
 
 /// @brief return 
