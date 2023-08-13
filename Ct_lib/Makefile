@@ -1,11 +1,16 @@
-NAME	=	Ctlib.a
+NAME	=	Ct_lib.a
 
 # Compiler and flags
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra -g
-RM		=	rm -f
+RM		=	rm -fr
+MK 		= 	mkdir -p
+
+# Include
+INCDIR = inc
 
 # Sources are all .c files
+SRCSDIR = src
 SRCS	=	Ct_atoi.c\
 			Ct_bzero.c\
 			Ct_calloc.c\
@@ -54,16 +59,24 @@ SRCS	=	Ct_atoi.c\
 			Ct_toupper.c\
 			Ct_ulltoa.c
 
-OBJS	=	$(SRCS:.c=.o)
+VPATH	=	${SRCSDIR}
+
+# Objects
+OBJSDIR  =   bin
+OBJS	=	$(addprefix ${OBJSDIR}/, ${SRCS:.c=.o})
 
 all: $(NAME)
 
 # Generates output file
-$(NAME): $(OBJS)
+${OBJSDIR}/%.o : %.c
+	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
+
+$(NAME): ${OBJSDIR} $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
-	@$(CC) $(CFLAGS) -c $(SRCS)
+$(OBJSDIR)		:
+	@$(MK) ${OBJSDIR}
+
 # Removes objects
 clean:
 	@$(RM) $(OBJS)
@@ -71,6 +84,7 @@ clean:
 # Removes objects and executables
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(OBJSDIR)
 
 # Removes objects and executables and remakes
 re: fclean all
