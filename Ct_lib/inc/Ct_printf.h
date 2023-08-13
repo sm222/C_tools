@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:13:03 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:39:48 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:39:48 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define CT_PRINTF_H
 
 # include "Ct_lib.h"
+
+# ifndef NO_PRINT
+#  define NO_PRINT -1
+# endif
 
 typedef struct Cs_printf
 {

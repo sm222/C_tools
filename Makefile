@@ -45,7 +45,7 @@ ${OBJSDIR}/%.o : %.c
 $(NAME): $(OBJSDIR) $(OBJS) $(LIB)
 	@cp $(LIB) $(NAME)
 	@ar -rcs $(NAME) $(OBJS)
-	@echo $(GRN)making $(NAME)
+	@echo $(GRN)making $(NAME)$(RESET)
 
 $(OBJSDIR)		:
 	@$(MK) ${OBJSDIR}

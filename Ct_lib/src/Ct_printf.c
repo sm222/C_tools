@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:32:21 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:41:57 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,27 @@ static int	Ct_print_select(va_list list, char c, int fd)
 	return (0);
 }
 
-static int	make_new_str(char *s, va_list arg, char **out)
+static int	make_new_str(char *s, va_list arg, char **out, int fd)
 {
+	int		len;
+	char	*tmp;
+
+	tmp = NULL;
+	if (!out)
+		out = &tmp;
 	*out = NULL;
 	*out = Ct_combine(s + 2, arg);
-	return (Ct_strlen(*out));
+	len =  Ct_strlen(*out);
+	if (!*out)
+		return (-1);
+	if (fd > -1)
+	{
+		len = Ct_putstr_fd(*out, fd);
+		*out = Ct_free(*out);
+	}
+	if (fd < 0)
+		Ct_free(tmp);
+	return (len);
 }
 
 /// @brief use to print like printf, "%o" give a adresse of a char *
@@ -74,7 +90,7 @@ int	Ct_printf(int fd, char *str, ...)
 		return (0);
 	va_start(pf.arg, str);
 	if (Ct_strncmp(str, "%o", 2) == 0)
-		return (make_new_str(str, pf.arg, va_arg(pf.arg, char **)));
+		return (make_new_str(str, pf.arg, va_arg(pf.arg, char **), fd));
 	while (str[pf.i])
 	{
 		if (str[pf.i] != '%')
