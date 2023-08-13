@@ -6,12 +6,12 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 13:52:47 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:58:28 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/C_tool.h"
-#include "../inc/utile.h"
+#include "C_tool.h"
+#include "utile.h"
 
 extern int	Ct_err_code;
 

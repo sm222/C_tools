@@ -57,7 +57,8 @@ SRCS	=	Ct_atoi.c\
 			Ct_substr.c\
 			Ct_tolower.c\
 			Ct_toupper.c\
-			Ct_ulltoa.c
+			Ct_ulltoa.c\
+			Ct_get_next_line.c
 
 VPATH	=	${SRCSDIR}
 

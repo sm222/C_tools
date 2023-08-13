@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   Ct_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:31:43 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:39:47 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:31:46 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ct_lib.h"
+
+static char	*Ct_strfjoin(char *sfree, char *s2)
+{
+	size_t	s1_i;
+	size_t	s2_i;
+	char	*new;
+
+	s1_i = Ct_strlen(sfree);
+	s2_i = Ct_strlen(s2);
+	new = Ct_calloc(s1_i + s2_i + 1, sizeof(char));
+	if (!new)
+		return (new = Ct_free(new));
+	while (s1_i + s2_i-- > s1_i)
+		new[s1_i + s2_i] = s2[s2_i];
+	while (s1_i--)
+		new[s1_i] = sfree[s1_i];
+	if (*new == 0)
+		new = Ct_free(new);
+	return (Ct_free(sfree), new);
+}
 
 static char	*Ct_tiny_split(char *s, size_t *cut)
 {
@@ -47,10 +67,10 @@ static char	Ct_find(char *s)
 /*
 return line from fd
 */
-char	*get_next_line(int fd)
+char	*Ct_get_next_line(int fd)
 {
 	static char	*book[INT_MAX / 2];
-	t_info		t_val;
+	t_Ct_info		t_val;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > INT_MAX / 2)
 		return (NULL);

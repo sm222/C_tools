@@ -6,13 +6,13 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 13:52:38 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:57:47 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 extern int	err_code;
 
-#include "../inc/C_tool.h"
+#include "C_tool.h"
 
 int	Ct_debug_pro(int err, char *file, short clean, char *msg, ...)
 {

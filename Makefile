@@ -11,8 +11,8 @@ CLE 	=	\e[1;1H\e[2J
 
 # Output file and dependencies
 NAME	=	C_tool.a
-LIB		= Ct_lib/Ct_lib.a
-LIB_DIR	= Ct_lib
+LIB		= 	Ct_lib/Ct_lib.a
+LIB_DIR	= 	Ct_lib
 
 # Compiler and flags
 CC		=	gcc
@@ -68,10 +68,10 @@ fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@$(RM) -f $(NAME)
 	@$(RM) -f a.out
-	@make -C get_next_line/ fclean
+	@make -C out_flag/ fclean
 
 flag: all
-	make -C get_next_line/
+	make -C out_flag/
 
 build: all
 	$(CC) $(CFLAGS) main.c $(NAME) && ./a.out
