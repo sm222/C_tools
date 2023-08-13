@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../C_tool.h"
-#include "get_next_line.h"
+#include "../inc/C_tool.h"
+#include "../Ct_lib/inc/Ct_get_next_line.h"
 
 static size_t	Ct_str_len(const char *s)
 {
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 	printf(GRN"pipe a programe in this one, ctrl + D or C to stop"RESET"\n");
 	while (s)
 	{
-		s = get_next_line(0);
+		s = Ct_get_next_line(0);
 		if (s)
 		{
 			if (s[Ct_str_len(s) - 1] == '\n')

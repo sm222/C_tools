@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 
-#include "../inc/C_tool.h"
-#include "../inc/utile.h"
+#include "C_tool.h"
+#include "utile.h"
 #include <time.h>
 
 extern int	Ct_err_code;

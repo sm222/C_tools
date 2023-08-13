@@ -20,6 +20,7 @@
 # include <stdarg.h>
 # include "index.h"
 # include "Ct_printf.h"
+# include "Ct_get_next_line.h"
 
 # define HEX_TABLE "0123456789abcdef"
 

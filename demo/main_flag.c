@@ -1,4 +1,4 @@
-#include "../C_tool.h"
+#include "../inc/C_tool.h"
 
 int	main(void)
 {
