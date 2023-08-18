@@ -2,7 +2,7 @@ NAME	=	Ct_lib.a
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -g
+CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -fr
 MK 		= 	mkdir -p
 

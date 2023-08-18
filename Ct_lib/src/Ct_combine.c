@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_combine.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:44:12 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:39:48 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:34:06 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*Ct_add_arg(va_list list, char type)
 		return (Ct_itoa(va_arg(list, int)));
 	else if (type == 'u')
 		return (Ct_ulltoa(va_arg(list, unsigned int), 10));
-	else if (type == 'x')
+	else if (type == 'x' || type == 'p')
 		return (Ct_ulltoa(va_arg(list, unsigned long), 16));
 	else if (type == '%')
 		return (Ct_strdup("%"));
