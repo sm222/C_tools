@@ -11,8 +11,10 @@
 /* ************************************************************************** */
 
 #include "C_tool.h"
+#include "../Ct_lib/inc/Ct_lib.h"
 
-extern int	Ct_err_code;
+
+int	Ct_err_code;
 
 void	Ct_mall_track(void *ptr)
 {

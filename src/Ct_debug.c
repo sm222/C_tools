@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:57:47 by oboucher         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:19:21 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 extern int	err_code;
 
 #include "C_tool.h"
+#include "../Ct_lib/inc/Ct_lib.h"
+
 
 int	Ct_debug_pro(int err, char *file, short clean, char *msg, ...)
 {

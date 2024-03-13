@@ -13,7 +13,6 @@
 #ifndef C_TOOL_H
 # define C_TOOL_H
 
-# include "../Ct_lib/inc/Ct_lib.h"
 # include "color.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -24,7 +23,7 @@
 
 # define LINE "__________________________________"
 
-int	Ct_err_code;
+extern int	Ct_err_code;
 # define MEM_OUT_FILE	".mem_file"
 
 

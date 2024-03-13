@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Ct_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2023/08/13 14:58:28 by oboucher         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:19:07 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "C_tool.h"
 #include "utile.h"
+#include "../Ct_lib/inc/Ct_lib.h"
+
 
 extern int	Ct_err_code;
 

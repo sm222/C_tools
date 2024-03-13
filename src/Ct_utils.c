@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "C_tool.h"
+#include "../Ct_lib/inc/Ct_lib.h"
+
 
 extern int	Ct_err_code;
 
