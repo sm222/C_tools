@@ -16,7 +16,7 @@
 /// @param ptr input, set to NULL if you want just the output
 /// @param i index of the adrres you want
 /// @return pointer to the variable or struc
-void	*fr_return_ptr(void *ptr, int i)
+void	*ft_return_ptr(void *ptr, int i)
 {
 	static void	*mem[10];
 
