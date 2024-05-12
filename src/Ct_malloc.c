@@ -14,40 +14,35 @@
 #include "../Ct_lib/inc/Ct_lib.h"
 
 
-int	Ct_err_code;
+extern int  Ct_err_code;
 
-void	Ct_mall_track(void *ptr)
-{
-	static void	**keep = NULL;
-	size_t	i = 0;
+void  Ct_mall_track(void* ptr) {
+  static void**  keep = NULL;
+  size_t         i = 0;
 
-	if (ptr)
-	{
-		if (!keep)
-		{
-			keep = Ct_calloc(2, sizeof(void *));
-			if (!keep)
-			{
-				return ;
-			}
-		}
-		else
-		{
-			while (keep[i])
-				i++;
-			Ct_realloc(keep, sizeof(void *), i, i + 2);
-		}
-		keep[i] = ptr;
-		Ct_debug_pro(no_err, MEM_OUT_FILE, 0, "add %p\n", ptr);
-	}
+  if (ptr) {
+    if (!keep) {
+      keep = Ct_calloc(2, sizeof(void *));
+      if (!keep) {
+        return ;
+      }
+    }
+    else {
+      while (keep[i])
+        i++;
+      Ct_realloc(keep, sizeof(void *), i, i + 2);
+    }
+    keep[i] = ptr;
+    Ct_debug_pro(no_err, MEM_OUT_FILE, 0, "add %p\n", ptr);
+  }
 }
 
 
-void	*Ct_malloc(size_t size)
+void  *Ct_malloc(size_t size)
 {
-	void	*new;
+  void*  new;
 
-	new = Ct_calloc(size, 1);
-	Ct_mall_track(new);
-	return (new);
+  new = Ct_calloc(size, 1);
+  Ct_mall_track(new);
+  return new;
 }

@@ -15,24 +15,22 @@
 #include "../inc/utile.h"
 #include <time.h>
 
-extern int	Ct_err_code;
+extern int  Ct_err_code;
 
-void	Ct_time_print(void)
-{
-	time_t rawtime;
-	struct tm *timeinfo;
+void  Ct_time_print(void) {
+  time_t rawtime;
+  struct tm* timeinfo;
 
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	printf("\r%s", asctime(timeinfo));
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+  printf("\r%s", asctime(timeinfo));
 }
 
-char	*Ct_time_return(void)
-{
-	time_t rawtime;
-	struct tm *timeinfo;
+char*  Ct_time_return(void) {
+  time_t     rawtime;
+  struct tm* timeinfo;
 
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	return(asctime(timeinfo));
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+  return(asctime(timeinfo));
 }
