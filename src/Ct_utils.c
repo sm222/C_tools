@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/C_tool.h"
+#include "../inc/utile.h"
 #include "../Ct_lib/inc/Ct_lib.h"
 
 
@@ -41,12 +42,9 @@ int  Ct_strcmp(char* s1, char* s2) {
 }
 
 size_t  Ct_str_len(const char* s) {
-  size_t  i;
-
-  i = 0;
-  while (s && s[i])
-    i++;
-  return i;
+  if (!s)
+    return 0;
+  return (strlen(s));
 }
 
 size_t	Ct_put_str(char* s, int fd) {
