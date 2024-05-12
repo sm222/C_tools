@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "../inc/C_tool.h"
 
 /// @brief use to pritn the memorry from a int or char ptr
 /// @param ptr adress

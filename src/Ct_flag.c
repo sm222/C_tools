@@ -6,12 +6,12 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2024/03/13 14:19:07 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:59:15 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
-#include "utile.h"
+#include "../inc/C_tool.h"
+#include "../inc/utile.h"
 #include "../Ct_lib/inc/Ct_lib.h"
 
 

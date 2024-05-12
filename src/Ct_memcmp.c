@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "C_tool.h"
+#include "../inc/C_tool.h"
 
 /// @brief use to comper 2 array of memorry
 /// @param ptr1 ptr1

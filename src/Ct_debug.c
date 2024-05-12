@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:37:39 by anboisve          #+#    #+#             */
-/*   Updated: 2024/03/13 14:19:21 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:59:57 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 extern int	err_code;
 
-#include "C_tool.h"
+#include "../inc/C_tool.h"
 #include "../Ct_lib/inc/Ct_lib.h"
 
 

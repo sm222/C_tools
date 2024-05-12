@@ -26,8 +26,6 @@ CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -fr
 MK 		= 	mkdir -p
 
-# INCLUDE
-INCDIR = inc
 
 # Sources and objects
 SRCSDIR = src
@@ -45,7 +43,7 @@ OBJS	=	$(addprefix ${OBJSDIR}/, ${SRCS:.c=.o})
 all: lib $(NAME)
 
 ${OBJSDIR}/%.o : %.c
-	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
+	@${CC} ${CFLAGS} -c $< -o $@
 
 # Generates output file
 $(NAME): $(OBJSDIR) $(OBJS) $(LIB)
