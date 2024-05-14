@@ -15,9 +15,9 @@
 #include "../Ct_lib/inc/Ct_lib.h"
 
 
-extern int  Ct_err_code;
+int  Ct_err_code = 0;
 
-const char Ct_err_msg[100][50] = {
+const char* const Ct_err_msg[] = {
   "no err",
   "err malloc",
   "did't call flag_init",

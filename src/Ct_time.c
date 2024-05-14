@@ -15,8 +15,6 @@
 #include "../inc/utile.h"
 #include <time.h>
 
-extern int  Ct_err_code;
-
 void  Ct_time_print(void) {
   time_t rawtime;
   struct tm* timeinfo;

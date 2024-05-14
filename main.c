@@ -1,8 +1,7 @@
 #include "inc/C_tool.h"
 
 int main() {
-	if (!Ct_flag_end(2))
-		Ct_err("hello");
-	Ct_err_code = 7;
-	Ct_err("hello");
+	Ct_flag_init();
+	Ct_debug_info("%Rtest%Be%ra\n");
+	Ct_flag_end(1);
 }
