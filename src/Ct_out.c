@@ -237,7 +237,7 @@ ssize_t Ct_debug_info(const char* s, ...) {
     i = calculate_size(s, &args, buff);
     if (i != -1 && DEBUG_FLAG & DflagOut)
       write(STDERR_FILENO, buff[0].str, strlen(buff[0].str));
-    if (i != -1 && DEBUG_FLAG & DflagLog) {
+    if ((i != -1) && (DEBUG_FLAG & DflagLog) == 1) {
       if (buff[1].outfile) {
         int fd = open(buff[1].outfile, O_CREAT | O_APPEND | O_RDWR, 0644);
         if (fd > -1) {
