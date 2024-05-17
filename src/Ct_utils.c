@@ -141,3 +141,49 @@ char*  ft_itoa(int n, char* buff) {
     buff[0] = '-';
   return buff;
 }
+
+
+const char* const list[] = {
+    " \\0",
+    "SHO",
+    "STX",
+    "ETX",
+    "EOT",
+    "ENQ",
+    "ACK",
+    " \\a",
+    " \\b",
+    " \\t",
+    " \\n",
+    " \\v",
+    " \\f",
+    " \\r",
+    " SO",
+    " SI",
+    "DLE",
+    "DC1",
+    "DC2",
+    "DC3",
+    "DC4",
+    "NAK",
+    "SYN",
+    "ETB",
+    "CAN",
+    " EM",
+    "SUB",
+    "ESC",
+    " FS",
+    " GS",
+    " RS",
+    " US",
+};
+
+void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE]) {
+  bzero(buff, TMP_BUFF_SIZE);
+  if (c > 31 && c < 127)
+    buff[0] = c;
+  else if (c >= 0 && c <= 31)
+    memcpy(buff, list[(int)c], 3);
+  else
+    strcpy(buff, "DEL");
+}

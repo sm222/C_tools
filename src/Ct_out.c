@@ -34,7 +34,7 @@ static int	print_select(va_list *list, char c, char *buff, char** ref, char* col
   bzero(buff,  TMP_BUFF_SIZE);
   bzero(color, TMP_BUFF_SIZE);
   testColor = strchr(colorName, c);
-  if (c == 's')
+  if (c == 's' || c == 'S')
   {
     s = va_arg(*list, char *);
     if (!s) {
@@ -131,15 +131,24 @@ static ssize_t calculate_size(const char* s, va_list* list, t_buff out[2]) {
     }
     else {
       j += print_select(list, s[++i], buff, &str, color);
-      if (str && s[i] != 'F') {
+      if (str && (s[i] != 'F' && s[i] != 'S')) {
+        printf("222\n");
         err += add_buff(str, &out[0]);
         err += add_buff(str, &out[1]);
         str = NULL;
       }
       else if (color[0])
         err += add_buff(color, &out[0]);
-      else if (str) {
+      else if (str && s[i] == 'F') {
         out[1].outfile = str;
+      }
+      else if (str && s[i] == 'S') {
+        printf("cici\n");
+        for (size_t k = 0; str[k]; k++) {
+          give_spcial_char(str[k], buff);
+          err += add_buff(buff, &out[0]);
+          err += add_buff(buff, &out[1]);
+        }
       }
       else {
         err += add_buff(buff, &out[0]);

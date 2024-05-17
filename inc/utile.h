@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2024/05/17 14:27:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:24:54 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void*   Ct_rt_ptr(void* ptr, int i);
 
 int     Ct_debug(int err, char* file, short clean, char* msg);
 
+void    give_spcial_char(char c, char buff[TMP_BUFF_SIZE]);
 char*   ft_ulltoa(unsigned long long nb, int base, char* out);
 char*   ft_itoa(int n, char* buff);
 
