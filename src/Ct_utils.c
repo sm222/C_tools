@@ -22,13 +22,19 @@ const char* const Ct_err_msg[] = {
   "err malloc",
   "did't call flag_init",
   "can't make flag",
+  "call flag_end with no flag",
   "call flag_init more that once",
   "call flag_end with no flag",
   "call flag_print with no flag",
   "make a flag with a negative number",
   "call flag_print with no flag_init",
-  "call flag_end with no flag",
+  "can't open file",
+  "can't make file",
+  "bad args",
+  //
 };
+
+
 
 int  Ct_strcmp(char* s1, char* s2) {
   size_t  i;
@@ -52,7 +58,7 @@ size_t	Ct_put_str(char* s, int fd) {
 }
 
 /// @brief tell what ft did't work well
-/// @param msg tell where the problem occur
+/// @param msg tell what was the problem
 void	Ct_err(char* msg) {
   Ct_printf(2, "%o%s: %s\n", NULL, msg, (char *)Ct_err_msg[Ct_err_code]);
 }
@@ -71,4 +77,67 @@ void  *Ct_rt_ptr(void* ptr, int i) {
   if (i < 0 && i > -101)
   	list[i * -1] = NULL;
   return NULL;
+}
+
+static int  size_of_unb(unsigned long long nb, int base) {
+  int  size;
+
+  size = 0;
+  while (nb) {
+    size++;
+    nb /= base;
+  }
+  return size;
+}
+
+char*  ft_ulltoa(unsigned long long nb, int base, char* out) {
+  int  i;
+
+  i = size_of_unb(nb, base);
+  if (nb == 0)
+    i++;
+  out[i] = 0;
+  while (i--) {
+    out[i] = HEX_TABLE[nb % base];
+    nb /= base;
+  }
+  return out;
+}
+
+static int  num_s(int n) {
+  int  i;
+
+  i = 1;
+  if (n == -2147483648)
+    return 11;
+  else if (n < 0) {
+    n = n * -1;
+    i++;
+  }
+  while (n > 9) {
+    n = n / 10;
+    i++;
+  }
+  return i;
+}
+
+static void set_str(char *s, int i, int long n) {
+  if (i > 0) {
+    s[i] = n % 10 + '0';
+    set_str(s, i - 1, n / 10);
+  }
+  else
+    s[i] = n % 10 + '0';
+}
+
+char*  ft_itoa(int n, char* buff) {
+  long int  temp;
+
+  temp = n;
+  if (temp < 0)
+    temp = temp * -1;
+  set_str(buff, num_s(n) - 1, temp);
+  if (n < 0)
+    buff[0] = '-';
+  return buff;
 }

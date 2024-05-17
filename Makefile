@@ -32,6 +32,7 @@ SRCS	=	src/Ct_flag.c\
 			src/Ct_out.c\
 			src/Ct_time.c\
 			src/Ct_utils.c\
+			src/Ct_err.c
 
 OBJS	=	$(SRCS:.c=.o)
 

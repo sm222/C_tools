@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <errno.h>
-
+# include "Ct_err.h"
 # define LINE "__________________________________"
 
 # define MEM_OUT_FILE	".mem_file"
@@ -50,6 +50,8 @@ ssize_t Ct_debug_info(const char* s, ...);
 int     Ct_debug_pro(int err, char* file, short clean, char* msg, ...);
 
 //malloc
+
+//
 
 typedef struct s_tool {
   int     i;

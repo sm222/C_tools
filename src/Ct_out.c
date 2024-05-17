@@ -16,70 +16,6 @@ const char* const colorList[] = {
   CLE,
 };
 
-static int  size_of_unb(unsigned long long nb, int base) {
-  int  size;
-
-  size = 0;
-  while (nb) {
-    size++;
-    nb /= base;
-  }
-  return size;
-}
-
-char  *ft_ulltoa(unsigned long long nb, int base, char *out) {
-  int  i;
-
-  i = size_of_unb(nb, base);
-  if (nb == 0)
-    i++;
-  out[i] = 0;
-  while (i--) {
-    out[i] = HEX_TABLE[nb % base];
-    nb /= base;
-  }
-  return out;
-}
-
-static int  num_s(int n) {
-  int  i;
-
-  i = 1;
-  if (n == -2147483648)
-    return 11;
-  else if (n < 0) {
-    n = n * -1;
-    i++;
-  }
-  while (n > 9) {
-    n = n / 10;
-    i++;
-  }
-  return i;
-}
-
-static void set_str(char *s, int i, int long n) {
-  if (i > 0) {
-    s[i] = n % 10 + '0';
-    set_str(s, i - 1, n / 10);
-  }
-  else
-    s[i] = n % 10 + '0';
-}
-
-static char	*ft_itoa(int n, char* buff) {
-  long int  temp;
-
-  temp = n;
-  if (temp < 0)
-    temp = temp * -1;
-  set_str(buff, num_s(n) - 1, temp);
-  if (n < 0)
-    buff[0] = '-';
-  return buff;
-}
-
-
 static void set_time_buff(char buff[TMP_BUFF_SIZE]) {
   time_t     rawtime;
   struct tm* timeinfo;
@@ -229,29 +165,28 @@ ssize_t Ct_debug_info(const char* s, ...) {
   ssize_t   i = 0;
   t_buff    buff[2];
 
-  if (!s)
+  if (!s) {
+    Ct_err_code = bad_args;
     return -1;
+  }
   bzero(buff, sizeof(buff));
   va_start(args, s);
   if (DEBUG_FLAG > 0) {
     i = calculate_size(s, &args, buff);
     if (i != -1 && DEBUG_FLAG & DflagOut)
       write(STDERR_FILENO, buff[0].str, strlen(buff[0].str));
-    if ((i != -1) && (DEBUG_FLAG & DflagLog) == 1) {
-      if (buff[1].outfile) {
-        int fd = open(buff[1].outfile, O_CREAT | O_APPEND | O_RDWR, 0644);
-        if (fd > -1) {
-          write(fd, buff[1].str, strlen(buff[1].str));
-          close(fd);
-        }
-        else
-          perror(buff[1].outfile);
+    if (buff[1].outfile) {
+      int fd = open(buff[1].outfile, O_CREAT | O_APPEND | O_RDWR, 0644);
+      if (fd > -1) {
+        write(fd, buff[1].str, strlen(buff[1].str));
+        close(fd);
       }
-      else
-        write(STDERR_FILENO, "no file give to output\n", 23);
+      else {
+        Ct_err_code = cant_make_file;
+      }
     }
     if (i == -1)
-      perror("calculate_size");
+        Ct_err_code = err_malloc;
     free(buff[0].str);
     free(buff[1].str);
   }
