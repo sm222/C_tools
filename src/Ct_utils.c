@@ -178,12 +178,23 @@ const char* const list[] = {
     " US",
 };
 
-void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE]) {
+void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE], bool file) {
+  size_t line = 0;
+
+  if (!file)
+    line = strlen(UNDERLINE);
   bzero(buff, TMP_BUFF_SIZE);
-  if (c > 31 && c < 127)
+  if (c > 31 && c < 127) {
     buff[0] = c;
-  else if (c >= 0 && c <= 31)
-    memcpy(buff, list[(int)c], 3);
+    return ;
+  }
+  else if (c >= 0 && c <= 31) {
+    memcpy(buff + line, list[(int)c], 3);
+  }
   else
-    strcpy(buff, "DEL");
+    memcpy(buff + line, "DEL", 3);
+  if (!file) {
+    memcpy(buff, UNDERLINE, line);
+    memcpy(buff + line + 3, RESET, strlen(RESET));
+  }
 }

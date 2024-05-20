@@ -132,7 +132,6 @@ static ssize_t calculate_size(const char* s, va_list* list, t_buff out[2]) {
     else {
       j += print_select(list, s[++i], buff, &str, color);
       if (str && (s[i] != 'F' && s[i] != 'S')) {
-        printf("222\n");
         err += add_buff(str, &out[0]);
         err += add_buff(str, &out[1]);
         str = NULL;
@@ -143,10 +142,11 @@ static ssize_t calculate_size(const char* s, va_list* list, t_buff out[2]) {
         out[1].outfile = str;
       }
       else if (str && s[i] == 'S') {
-        printf("cici\n");
-        for (size_t k = 0; str[k]; k++) {
-          give_spcial_char(str[k], buff);
+        size_t Slen = strlen(str);
+        for (size_t k = 0; k < Slen + 1; k++) {
+          give_spcial_char(str[k], buff, false);
           err += add_buff(buff, &out[0]);
+          give_spcial_char(str[k], buff, true);
           err += add_buff(buff, &out[1]);
         }
       }
@@ -184,7 +184,7 @@ ssize_t Ct_debug_info(const char* s, ...) {
     i = calculate_size(s, &args, buff);
     if (i != -1 && DEBUG_FLAG & DflagOut)
       write(STDERR_FILENO, buff[0].str, strlen(buff[0].str));
-    if (buff[1].outfile) {
+    if (i != -1 && buff[1].outfile) {
       int fd = open(buff[1].outfile, O_CREAT | O_APPEND | O_RDWR, 0644);
       if (fd > -1) {
         write(fd, buff[1].str, strlen(buff[1].str));
