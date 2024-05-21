@@ -182,7 +182,7 @@ void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE], bool file) {
   size_t line = 0;
 
   if (!file)
-    line = strlen(UNDERLINE);
+    line = strlen(Ct_UNDERLINE);
   bzero(buff, TMP_BUFF_SIZE);
   if (c > 31 && c < 127) {
     buff[0] = c;
@@ -194,7 +194,7 @@ void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE], bool file) {
   else
     memcpy(buff + line, "DEL", 3);
   if (!file) {
-    memcpy(buff, UNDERLINE, line);
-    memcpy(buff + line + 3, RESET, strlen(RESET));
+    memcpy(buff, Ct_UNDERLINE, line);
+    memcpy(buff + line + 3, Ct_RESET, strlen(Ct_RESET));
   }
 }

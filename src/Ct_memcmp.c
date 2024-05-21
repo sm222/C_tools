@@ -28,11 +28,11 @@ void  Ct_memcmp_print(void* ptr1, void* ptr2, size_t size, int type) {
       printf("%12ld | ", i++);
   }
   else if (type == 1) {
-    printf(YEL);
+    printf(Ct_YEL);
     printf("[i]");
     while (i < size)
       printf("%3ld | ", i++);
-    printf(WHT);
+    printf(Ct_WHT);
   }
   printf("\n");
   Ct_mprintf(ptr2, size, type, 'B');

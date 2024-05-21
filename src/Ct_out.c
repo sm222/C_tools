@@ -4,16 +4,16 @@
 
 const char* const  colorName = "RGYBMCWOrz";
 const char* const colorList[] = {
-  RED,
-  GRN,
-  YEL,
-  BLU,
-  MAG,
-  CYN,
-  WHT,
-  ORG,
-  RESET,
-  CLE,
+  Ct_RED,
+  Ct_GRN,
+  Ct_YEL,
+  Ct_BLU,
+  Ct_MAG,
+  Ct_CYN,
+  Ct_WHT,
+  Ct_ORG,
+  Ct_RESET,
+  Ct_CLE,
 };
 
 static void set_time_buff(char buff[TMP_BUFF_SIZE]) {
@@ -195,7 +195,7 @@ ssize_t Ct_debug_info(const char* s, ...) {
       }
     }
     if (i == -1)
-        Ct_err_code = err_malloc;
+      Ct_err_code = err_malloc;
     free(buff[0].str);
     free(buff[1].str);
   }
