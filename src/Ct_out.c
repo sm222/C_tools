@@ -16,7 +16,7 @@ const char* const colorList[] = {
   Ct_CLE,
 };
 
-static void set_time_buff(char buff[TMP_BUFF_SIZE]) {
+static void set_time_buff(char buff[]) {
   time_t     rawtime;
   struct tm* timeinfo;
   time(&rawtime);
@@ -38,7 +38,7 @@ static int	print_select(va_list *list, char c, char *buff, char** ref, char* col
   {
     s = va_arg(*list, char *);
     if (!s) {
-      memcpy(buff, "(null)", 7);
+      memcpy(buff, "(null)", 6);
       return 6;
     }
     *ref = s;
@@ -47,31 +47,21 @@ static int	print_select(va_list *list, char c, char *buff, char** ref, char* col
   else if (c == 'i' || c == 'd') {
     nb = va_arg(*list, int);
     ft_itoa(nb, buff);
-		return (strlen(buff));
   }
   else if (c == 'c') {
     nb = (va_arg(*list, int));
     buff[0] = nb;
-    buff[1] = 0;
-    return 1;
   }
   else if (c == 'p') {
     ft_ulltoa(va_arg(*list, unsigned long), 16, buff + 2);
     memcpy(buff, "0x", 2);
-    return (strlen(buff));
   }
-  else if (c == '%') {
-    memcpy(buff, "%", 2);
-    return 1;
-  }
-  else if (c == 'x') {
+  else if (c == '%')
+    buff[0] = '%';
+  else if (c == 'x') 
     ft_ulltoa(va_arg(*list, unsigned long), 16, buff);
-    return (strlen(buff));
-  }
-  else if (c == 'u') {
+  else if (c == 'u')
     ft_ulltoa(va_arg(*list, unsigned long), 10, buff);
-    return (strlen(buff));
-  }
   else if (testColor) {
     size_t tmp = (colorName - testColor) *-1;
     memcpy(color, colorList[tmp], strlen(colorList[tmp]) + 1);
@@ -83,11 +73,9 @@ static int	print_select(va_list *list, char c, char *buff, char** ref, char* col
     }
     *ref = s;
   }
-  else if (c == 'T') {
+  else if (c == 'T')
     set_time_buff(buff);
-    return (strlen(buff));
-  }
-  return 0;
+  return (strlen(buff));
 }
 
 

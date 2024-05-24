@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2024/05/20 18:42:16 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:38:41 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <time.h>
+# include <sys/time.h>
 # include <stdbool.h>
 # include "color.h"
+
+typedef struct timeval tt_time;
 
 # ifndef CT_CODE
 #  define CT_CODE
@@ -32,7 +35,10 @@
 
 # define SIZE_BUFF      200
 # define BUFF_MUL       2
-# define TMP_BUFF_SIZE  30
+
+# ifndef TMP_BUFF_SISE
+#  define TMP_BUFF_SIZE  30
+# endif
 
 enum	e_err_msg_code {
   no_err,
@@ -92,9 +98,10 @@ void*   Ct_rt_ptr(void* ptr, int i);
 
 int     Ct_debug(int err, char* file, short clean, char* msg);
 
-void    give_spcial_char(char c, char buff[TMP_BUFF_SIZE], bool file);
+void    give_spcial_char(char c, char buff[], bool file);
 char*   ft_ulltoa(unsigned long long nb, int base, char* out);
 char*   ft_itoa(int n, char* buff);
+
 
 int    Ct_errErrCode(void);
 

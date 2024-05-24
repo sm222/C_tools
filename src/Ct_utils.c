@@ -178,7 +178,7 @@ const char* const list[] = {
     " US",
 };
 
-void  give_spcial_char(char c, char buff[TMP_BUFF_SIZE], bool file) {
+void  give_spcial_char(char c, char buff[], bool file) {
   size_t line = 0;
 
   if (!file)

@@ -23,6 +23,13 @@
 # include "Ct_err.h"
 # define LINE "__________________________________"
 
+typedef struct timeval tt_time;
+
+# define TIMER(start, stop) tt_time start, stop
+# define DEF_TIMER TIMER(start, stop);
+# define START_TIME DEF_TIMER; Ct_start_time(&start)
+# define STOP_TIME Ct_stop_time(&start, &stop)
+
 # define MEM_OUT_FILE	".mem_file"
 
 
@@ -48,6 +55,10 @@ void   Ct_memcmp_print(void* ptr1, void* ptr2, size_t size, int type);
 // log
 ssize_t Ct_debug_info(const char* s, ...);
 int     Ct_debug_pro(int err, char* file, short clean, char* msg, ...);
+
+//time 
+short  Ct_start_time(tt_time* start);
+const char* Ct_stop_time(tt_time* start, tt_time* stop);
 
 //malloc
 
