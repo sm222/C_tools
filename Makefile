@@ -45,6 +45,9 @@ $(NAME): $(OBJS)
 lib:
 	make -C Ct_lib
 
+test:
+	gcc -Wall -Werror -Wextra main.c C_tools.a
+
 # Removes objects
 clean:
 	$(RM) $(OBJS)

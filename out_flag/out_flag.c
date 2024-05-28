@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 				s[Ct_str_len(s) - 1] = 0;
 			if (look_name(s, av, ac))
 				cat++;
-			else if (Ct_make_flag(s, cat) == -1)
+			else if (Ct_flag_make(s, cat) == -1)
 				Ct_err("main");
 			free(s);
 		}

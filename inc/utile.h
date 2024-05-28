@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2024/05/24 17:38:41 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:14:59 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <pthread.h>
 # include <time.h>
 # include <sys/time.h>
 # include <stdbool.h>
@@ -91,19 +92,11 @@ typedef struct s_buff {
 #  define Ct_mall 3
 # endif
 
-int     Ct_strcmp(char* s1, char* s2);
 size_t  Ct_str_len(const char* s);
-size_t  Ct_put_str(char* s, int fd);
 void*   Ct_rt_ptr(void* ptr, int i);
 
+int     Ct_errErrCode(void);
 int     Ct_debug(int err, char* file, short clean, char* msg);
-
-void    give_spcial_char(char c, char buff[], bool file);
-char*   ft_ulltoa(unsigned long long nb, int base, char* out);
-char*   ft_itoa(int n, char* buff);
-
-
-int    Ct_errErrCode(void);
 
 
 typedef struct s_flag {

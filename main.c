@@ -1,9 +1,14 @@
 #include "inc/C_tool.h"
 
+
 int main() {
-	//Ct_debug_info("%d\n", );
-	START_TIME;
-	Ct_start_time(&start);
-	//usleep(1);
-	printf("%s\n", STOP_TIME);
+	TIME_START;
+	LOG_ERR("this is a loop");
+	for (size_t i = 0; i < 10; i++)
+	{
+		TIME_RESTART;
+		sleep(1);
+		LOG_MSG(TIME_STOP);
+	}
+	LOG_WAR("test end");
 }

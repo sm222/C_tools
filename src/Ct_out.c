@@ -1,6 +1,10 @@
 # include "../inc/utile.h"
 # include "../Ct_lib/inc/Ct_lib.h"
 
+char*   ft_itoa(int n, char* buff);
+void    give_spcial_char(char c, char buff[], bool file);
+char*   ft_ulltoa(unsigned long long nb, int base, char* out);
+
 
 const char* const  colorName = "RGYBMCWOrz";
 const char* const colorList[] = {

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 10:06:59 by anboisve          #+#    #+#             */
-/*   Updated: 2024/05/12 17:28:59 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/05/28 09:14:18 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static Ct_t_flag *make_node_flag(char* name, short cat) {
 /// @param name name of the flag
 /// @return 0 if flag_init was not call fist,
 /// @return -1 malloc fail, 1 on success
-int Ct_make_flag(char* name, short cat) {
+int Ct_flag_make(char* name, short cat) {
   Ct_t_flag**  tmp;
   Ct_t_flag*   tm;
 
