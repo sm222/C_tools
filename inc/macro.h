@@ -6,10 +6,10 @@
 #include "utile.h"
 
 // time
-# define TIME(start, stop, buff_name) tt_time start, stop ; char buff_name[TMP_BUFF_SIZE]
+# define TIME(start, stop, buff_name) tt_time start, stop ; char buff_name[TMP_BUFF_SIZE]; bzero(buff_name, TMP_BUFF_SIZE)
 # define TIME_DEF                     TIME(start, stop, buff_name)
 # define TIME_START                   TIME_DEF; Ct_start_time(&start)
-# define TIME_RESTART                 Ct_start_time(&start)
+# define TIME_RESTART                 Ct_start_time(&start); bzero(buff_name, TMP_BUFF_SIZE)
 # define TIME_STOP                    Ct_stop_time(&start, &stop, buff_name, TMP_BUFF_SIZE)
 //
 

@@ -46,8 +46,8 @@ const char* Ct_stop_time(tt_time* start, tt_time* stop, char* out, int size) {
   if (!start || !stop || size < 1)
     return out;
   gettimeofday(stop, NULL);
-  int len = snprintf(buff, TMP_BUFF_SIZE, "%ld", \
-  (stop->tv_sec - start->tv_sec) + (stop->tv_usec - start->tv_usec));
+  int len = snprintf(buff, TMP_BUFF_SIZE, "%lu", \
+  ((stop->tv_sec * 1000 - start->tv_sec * 1000) + (stop->tv_usec / 1000 - start->tv_usec / 1000)));
   for (int i = 0; i < size && i < len; i++) {
     out[i] = buff[i];
   }

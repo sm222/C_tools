@@ -170,7 +170,7 @@ ssize_t Ct_debug_info(const char* s, ...) {
     Ct_err_code = bad_args;
     return -1;
   }
-  bzero(buff, sizeof(buff));
+  bzero(buff, sizeof(t_buff) * 2);
   va_start(args, s);
   if (DEBUG_FLAG > 0) {
     i = calculate_size(s, &args, buff);
