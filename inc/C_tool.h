@@ -26,7 +26,7 @@
 
 typedef struct timeval tt_time;
 
-
+# define TRACV(val)   (data_trac_t){val}
 
 # define MEM_OUT_FILE	".mem_file"
 
@@ -58,6 +58,12 @@ int         Ct_debug_pro(int err, char* file, short clean, char* msg, ...);
 short       Ct_start_time(tt_time* start);
 const char* Ct_stop_time(tt_time* start, tt_time* stop, char* out, int size);
 
+// trac
+void        Ct_trac(void);
+void        Ct_trac_speed(const size_t speed);
+short       Ct_trac_add(const char* name, data_trac_t data, trac_type_t type);
+short       Ct_trac_rm(const char* name);
+void        Ct_trac_end(void);
 //malloc
 
 //

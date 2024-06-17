@@ -32,6 +32,7 @@ SRCS	=	src/Ct_flag.c\
 			src/Ct_out.c\
 			src/Ct_time.c\
 			src/Ct_utils.c\
+			src/Ct_tracker.c\
 			src/Ct_err.c
 
 OBJS	=	$(SRCS:.c=.o)
@@ -41,12 +42,12 @@ all: lib $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	cp -p Ct_lib/Ct_lib.a $(NAME)
-	ar -rcs $(NAME) $(OBJS)
+	ar -rcs -lncurses $(NAME) $(OBJS)
 lib:
 	make -C Ct_lib
 
 test:
-	gcc -Wall -Werror -Wextra main.c C_tools.a
+	gcc -Wall -Werror -Wextra main.c C_tools.a -lncurses
 
 # Removes objects
 clean:

@@ -2,13 +2,11 @@
 
 
 int main() {
-	TIME_START;
-	LOG_ERR("this is a loop");
-	for (size_t i = 0; i < 10; i++)
-	{
-		TIME_RESTART;
-		sleep(1);
-		LOG_MSG(TIME_STOP);
+	Ct_trac_add("test1", TRACV(8), _int);
+	for (size_t i = 0; i < 10000; i++) {
+		Ct_trac_add("test1", TRACV(i), _int);
+		Ct_trac();
+		usleep(10000);
 	}
-	LOG_WAR("test end");
+	Ct_trac_end();
 }

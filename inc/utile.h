@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utile.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2024/05/27 17:14:59 by anboisve         ###   ########.fr       */
+/*   Updated: 2024/06/17 09:12:23 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <time.h>
 # include <sys/time.h>
 # include <stdbool.h>
+# include <errno.h>
+
 # include "color.h"
 
 typedef struct timeval tt_time;
@@ -40,6 +42,8 @@ typedef struct timeval tt_time;
 # ifndef TMP_BUFF_SISE
 #  define TMP_BUFF_SIZE  30
 # endif
+
+#define TRAC_BUFF 101
 
 enum	e_err_msg_code {
   no_err,
@@ -65,6 +69,33 @@ enum Dflag {
     DflagExit = 0b00000100,
 };
 
+typedef union data_trac {
+  int           i;
+  float         f;
+  double        d;
+  char          c;
+  size_t        len; // make a line of '|'
+  unsigned char percent;
+} data_trac_t;
+
+
+typedef enum trac_type {
+  _char,
+  _int,
+  _float,
+  _double,
+  _len,
+  _percent,
+} trac_type_t;
+
+typedef struct t_tracker {
+  char*           _name[TRAC_BUFF];
+  data_trac_t     _data[TRAC_BUFF];
+  trac_type_t     _type[TRAC_BUFF];
+  size_t          _total;
+  int             _name_len;
+  size_t          _speed;
+} tracker_t;
 
 typedef struct s_buff {
   ssize_t   len;
