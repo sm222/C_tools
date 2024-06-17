@@ -64,6 +64,14 @@ void        Ct_trac_speed(const size_t speed);
 short       Ct_trac_add(const char* name, data_trac_t data, trac_type_t type);
 short       Ct_trac_rm(const char* name);
 void        Ct_trac_end(void);
+//
+data_trac_t tracChar(char c);
+data_trac_t tracInt(int i);
+data_trac_t tracFloat(float f);
+data_trac_t tracDouble(double d);
+data_trac_t tracLen(size_t l);
+data_trac_t tracPer(int l);
+
 //malloc
 
 //

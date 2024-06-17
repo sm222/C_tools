@@ -8,6 +8,48 @@ static tracker_t* _trac_list(void) {
   return &d;
 }
 
+data_trac_t tracChar(char c) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.c = c;
+  return t;
+}
+
+data_trac_t tracInt(int i) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.i = i;
+  return t;
+}
+
+data_trac_t tracFloat(float f) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.f = f;
+  return t;
+}
+
+data_trac_t tracDouble(double d) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.d = d;
+  return t;
+}
+
+data_trac_t tracLen(size_t l) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.len = l;
+  return t;
+}
+
+data_trac_t tracPer(int l) {
+  data_trac_t t;
+  bzero(&t, sizeof(t));
+  t.percent = l;
+  return t;
+}
+
 static short _edit_val(tracker_t* d, const size_t i, data_trac_t data, trac_type_t type) {
   if (i >= TRAC_BUFF)
     return 1;

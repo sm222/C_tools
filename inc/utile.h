@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:05:37 by anboisve          #+#    #+#             */
-/*   Updated: 2024/06/17 13:35:50 by antoine          ###   ########.fr       */
+/*   Updated: 2024/06/17 17:47:51 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ enum Dflag {
     DflagExit = 0b00000100,
 };
 
-typedef union data_trac {
+typedef struct data_trac {
+  char          c;
+  int           i;
   float         f;
   double        d;
-  int           i;
-  char          c;
   size_t        len; // make a line of '|'
   unsigned char percent;
 } data_trac_t;

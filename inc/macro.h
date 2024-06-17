@@ -28,13 +28,13 @@
 
 //trac
 # define TRAC_SPEED(val)               Ct_trac_speed(val)
-# define TRAC_ADD(name, val, type)     Ct_trac_add(name, TRACV(val), type)
-# define TRAC_ADD_INT(name, val)       Ct_trac_add(name, TRACV(val), _int)
-# define TRAC_ADD_FLOAT(name, val)     Ct_trac_add(name, TRACV(val), _float)
-# define TRAC_ADD_DOUBLE(name, val)    Ct_trac_add(name, TRACV(val), _double)
-# define TRAC_ADD_CHAR(name, val)      Ct_trac_add(name, TRACV(val), _char)
-# define TRAC_ADD_LINE(name, val)      Ct_trac_add(name, TRACV(val), _line)
-# define TRAC_ADD_PER(name, val)       Ct_trac_add(name, TRACV(val), _percent)
+//# define TRAC_ADD(name, val, type)     Ct_trac_add(name, tracChar(val), type)
+# define TRAC_ADD_CHAR(name, val)      Ct_trac_add(name, tracChar(val),   _char)
+# define TRAC_ADD_INT(name, val)       Ct_trac_add(name, tracInt(val),    _int)
+# define TRAC_ADD_FLOAT(name, val)     Ct_trac_add(name, tracFloat(val),  _float)
+# define TRAC_ADD_DOUBLE(name, val)    Ct_trac_add(name, tracDouble(val), _double)
+# define TRAC_ADD_LINE(name, val)      Ct_trac_add(name, tracLen(val),    _len)
+# define TRAC_ADD_PER(name, val)       Ct_trac_add(name, tracPer(val),    _percent)
 # define TRAC_RM(name)                 Ct_trac_rm(name)
 
 // err
