@@ -26,12 +26,21 @@
 # define FLAG_OUT(cat)                 Ct_flag_print(cat)
 # define FLAG_END(bool)                Ct_flag_end(bool)
 
+//trac
+# define TRAC_SPEED(val)               Ct_trac_speed(val)
+# define TRAC_ADD(name, val, type)     Ct_trac_add(name, TRACV(val), type)
+# define TRAC_ADD_INT(name, val)       Ct_trac_add(name, TRACV(val), _int)
+# define TRAC_ADD_FLOAT(name, val)     Ct_trac_add(name, TRACV(val), _float)
+# define TRAC_ADD_DOUBLE(name, val)    Ct_trac_add(name, TRACV(val), _double)
+# define TRAC_ADD_CHAR(name, val)      Ct_trac_add(name, TRACV(val), _char)
+# define TRAC_ADD_LINE(name, val)      Ct_trac_add(name, TRACV(val), _line)
+# define TRAC_ADD_PER(name, val)       Ct_trac_add(name, TRACV(val), _percent)
+# define TRAC_RM(name)                 Ct_trac_rm(name)
 
 // err
 # define ERR_MSG         Ct_strerr(Ct_errErrCode())
 # define ERR_Code        Ct_errErrCode()
 //
-
 
 #endif // MACRO_H
 

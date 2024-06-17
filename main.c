@@ -2,11 +2,12 @@
 
 
 int main() {
-	Ct_trac_add("test1", TRACV(8), _int);
+	float a = 1.234;
 	for (size_t i = 0; i < 10000; i++) {
-		Ct_trac_add("test1", TRACV(i), _int);
-		Ct_trac();
+		TRAC_ADD_INT("test", i);
+		Ct_trac_add("test2", TRACV(a), _float);
 		usleep(10000);
+		Ct_trac();
 	}
 	Ct_trac_end();
 }

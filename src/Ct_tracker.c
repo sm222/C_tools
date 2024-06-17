@@ -135,10 +135,10 @@ void  Ct_trac(void) {
       t->_total += snprintf(out, BUFSIZ, "%*.*s | %i", t->_name_len, t->_name_len, t->_name[i] , t->_data[i].i);
       break;
     case _double:
-      t->_total += snprintf(out, BUFSIZ, "%*.*s | %10.f", t->_name_len, t->_name_len, t->_name[i], t->_data[i].d);
+      t->_total += snprintf(out, BUFSIZ, "%*.*s | %f", t->_name_len, t->_name_len, t->_name[i], t->_data[i].d);
       break;
     case _float:
-      t->_total += snprintf(out, BUFSIZ, "%*.*s | %10.f", t->_name_len, t->_name_len, t->_name[i], t->_data[i].f);
+      t->_total += snprintf(out, BUFSIZ, "%*.*s | %f", t->_name_len, t->_name_len, t->_name[i], t->_data[i].f);
       break;
     case _len:
       char tmp[BUFSIZ / 2];
