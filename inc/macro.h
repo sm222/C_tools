@@ -19,6 +19,10 @@
 # define LOG_ERR(str)                  Ct_debug_info("[%R%T%r] %s\n", str)
 # define LOG_WAR(str)                  Ct_debug_info("[%Y%T%r] %s\n", str)
 //
+# define LOG_MSG_F(str, file)          Ct_debug_info("[%C%T%r] %s\n%F", str, (file != NULL ? file : "Ct_log.txt"))
+# define LOG_ERR_F(str, file)          Ct_debug_info("[%R%T%r] %s\n%F", str, (file != NULL ? file : "Ct_log.txt"))
+# define LOG_WAR_F(str, file)          Ct_debug_info("[%Y%T%r] %s\n%F", str, (file != NULL ? file : "Ct_log.txt"))
+
 
 // flag
 # define FLAG_INIT                     Ct_flag_init()
@@ -38,8 +42,8 @@
 # define TRAC_RM(name)                 Ct_trac_rm(name)
 
 // err
-# define ERR_MSG         Ct_strerr(Ct_errErrCode())
-# define ERR_Code        Ct_errErrCode()
+# define ERR_MSG                       Ct_strerr(Ct_errErrCode())
+# define ERR_Code                      Ct_errErrCode()
 //
 
 #endif // MACRO_H
