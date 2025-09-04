@@ -2,7 +2,6 @@
 #ifndef MACRO_H
 # define MACRO_H
 
-#include "C_tool.h"
 #include "utile.h"
 
 // time

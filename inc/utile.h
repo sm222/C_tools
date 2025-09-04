@@ -43,7 +43,7 @@ typedef struct timeval tt_time;
 #  define TMP_BUFF_SIZE  30
 # endif
 
-#define TRAC_BUFF 101
+
 
 enum	e_err_msg_code {
   no_err,
@@ -69,33 +69,7 @@ enum Dflag {
     DflagExit = 0b00000100,
 };
 
-typedef struct data_trac {
-  char          c;
-  int           i;
-  float         f;
-  double        d;
-  size_t        len; // make a line of '|'
-  unsigned char percent;
-} data_trac_t;
 
-
-typedef enum trac_type {
-  _char,
-  _int,
-  _float,
-  _double,
-  _len,
-  _percent,
-} trac_type_t;
-
-typedef struct t_tracker {
-  char*           _name[TRAC_BUFF];
-  data_trac_t     _data[TRAC_BUFF];
-  trac_type_t     _type[TRAC_BUFF];
-  size_t          _total;
-  int             _name_len;
-  size_t          _speed;
-} tracker_t;
 
 typedef struct s_buff {
   ssize_t   len;

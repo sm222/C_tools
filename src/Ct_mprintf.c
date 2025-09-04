@@ -10,7 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/C_tool.h"
+#include "stdio.h"
+
+const char* const names[] = {
+  " \\0",
+  "SHO",
+  "STX",
+  "ETX",
+  "EOT",
+  "ENQ",
+  "ACK",
+  " \\a",
+  " \\b",
+  " \\t",
+  " \\n",
+  " \\v",
+  " \\f",
+  " \\r",
+  " SO",
+  " SI",
+  "DLE",
+  "DC1",
+  "DC2",
+  "DC3",
+  "DC4",
+  "NAK",
+  "SYN",
+  "ETB",
+  "CAN",
+  " EM",
+  "SUB",
+  "ESC",
+  " FS",
+  " GS",
+  " RS",
+  " US",
+  "---",
+  NULL
+};
 
 /// @brief use to pritn the memorry from a int or char ptr
 /// @param ptr adress
@@ -64,70 +101,10 @@ void  Ct_mprintf(void* ptr, size_t size, int type, int name) {
     while (i < size) {
       if (((char *)ptr)[i] > 31 && ((char *)ptr)[i] < 127)
       	printf("%3c | ", ((char *)ptr)[i]);
-      else if (((char *)ptr)[i] == 0)
-        printf(" \\0 | ");
-      else if (((char *)ptr)[i] == 1)
-        printf("SHO | ");
-      else if (((char *)ptr)[i] == 2)
-        printf("STX | ");
-      else if (((char *)ptr)[i] == 3)
-        printf("ETX | ");
-      else if (((char *)ptr)[i] == 4)
-        printf("EOT | ");
-      else if (((char *)ptr)[i] == 5)
-        printf("ENQ | ");
-      else if (((char *)ptr)[i] == 6)
-        printf("ACK | ");
-      else if (((char *)ptr)[i] == 7)
-        printf(" \\a | ");
-      else if (((char *)ptr)[i] == 8)
-        printf(" \\b | ");
-      else if (((char *)ptr)[i] == 9)
-        printf(" \\t | ");
-      else if (((char *)ptr)[i] == 10)
-        printf(" \\n | ");
-      else if (((char *)ptr)[i] == 11)
-        printf(" \\v | ");
-      else if (((char *)ptr)[i] == 12)
-        printf(" \\f | ");
-      else if (((char *)ptr)[i] == 13)
-        printf(" \\r | ");
-      else if (((char *)ptr)[i] == 14)
-        printf(" SO | ");
-      else if (((char *)ptr)[i] == 15)
-        printf(" SI | ");
-      else if (((char *)ptr)[i] == 16)
-        printf("DLE | ");
-      else if (((char *)ptr)[i] == 17)
-        printf("DC1 | ");
-      else if (((char *)ptr)[i] == 18)
-        printf("DC2 | ");
-      else if (((char *)ptr)[i] == 19)
-        printf("DC3 | ");
-      else if (((char *)ptr)[i] == 20)
-        printf("DC4 | ");
-      else if (((char *)ptr)[i] == 21)
-        printf("NAK | ");
-      else if (((char *)ptr)[i] == 22)
-        printf("SYN | ");
-      else if (((char *)ptr)[i] == 23)
-        printf("ETB | ");
-      else if (((char *)ptr)[i] == 24)
-        printf("CAN | ");
-      else if (((char *)ptr)[i] == 25)
-        printf(" EM | ");
-      else if (((char *)ptr)[i] == 26)
-        printf("SUB | ");
-      else if (((char *)ptr)[i] == 27)
-        printf("ESC | ");
-      else if (((char *)ptr)[i] == 28)
-        printf(" FS | ");
-      else if (((char *)ptr)[i] == 29)
-        printf(" GS | ");
-      else if (((char *)ptr)[i] == 30)
-        printf(" RS | ");
-      else if (((char *)ptr)[i] == 31)
-        printf(" US | ");
+      else if (((char *)ptr)[i] >= 0) {
+        const int v = ((char *)ptr)[i];
+        printf("%3s| ", names[v]); //printf("%3s | ", names[((int)((int *)ptr)[i])]);
+      }
       else
       	printf("%3d | ", ((char *)ptr)[i]);
       i++;
